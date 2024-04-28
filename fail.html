@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }   
+            .loader {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('img/alert.png') 50% 50% no-repeat rgba(41,56,65,255);
+                background-color: #293841;
+                align-items: center;
+                display: flex;
+                opacity: .9;
+                justify-content: center;
+
+            }
+            .buttonSend:focus{
+                box-shadow: none;
+                color: white;
+                font-family: "Comic Sans MS", cursive;
+                outline: none;
+            }
+            .buttonSend:hover{
+                transform: scale(1.2);
+                color: white;
+                font-family: "Comic Sans MS", cursive;
+            }
+        </style>
+    </head>
+    <body style="background-color: #293841;
+          background-size: cover;overflow-x: hidden;
+          background-attachment: fixed" class="scrol scrol-thumb">
+        <div class="loader" id="loader" style="background-color: #293841;text-align: center;display: flex">
+            <div class="container" style="padding: 15px;border-radius: 12px;background: rgba(1,1,1,.7);">
+                <h2 id='loaderMensaje' style="margin-bottom: 25px;font-family:'Comic Sans MS';font-size: 40px;text-align: center;color: #2aa58a" class="justify-content-center">
+                    Oops... La transacción no pudo ser copletada con exito!
+                </h2>
+                <button class='btn text-light buttonSend' id="accept" style="font-size: 18px;font-family: 'Comic Sans MS';width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px">Aceptar</button>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                urlVariables = location.search.substring(1, location.search.length);
+                nombreC = urlVariables.toString();
+                $("#accept").click(function () {
+                    if (nombreC) {
+                        var stringUrl = nombreC.toString();
+                        var url = "profileUser.html";
+                        url += "?";
+                        nomVec = stringUrl.split(",");
+                        url += nomVec;
+                        location.href = url;
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"  crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="script/css/scrooll1.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }
+            .texta:focus{
+                outline: none;
+                box-shadow: none;
+            }
+            .buttonSend:focus{
+                box-shadow: none;
+                color: white;
+                font-family: 'Comic Sans MS', cursive;
+
+            }
+            .buttonSend:hover{
+                transform: scale(1.2);
+                color: white;
+                font-family: 'Comic Sans MS', cursive;
+            }
+            .btn:focus{
+                outline: none;
+                box-shadow: none;
+                color: #3c3f41;
+                font-family: 'Comic Sans MS', cursive;
+            }
+        </style>
+    </head>
+    <body style="background-color: #131313;
+          background-size: cover;
+          background-attachment: fixed"
+          class="scrol scrol-thumb">
+        <div class="container justify-content-center" style="margin-bottom: 50px">
+            <div class="row justify-content-center">
+                <img src="img/cover.png" style="border-radius: 25px;width: 70%;height: ">
+                <p id="mensajeReporte" style="color: white;font-family: 'Comic Sans MS', cursive;line-height : 25px;font-size: 23px;margin-top: 10px;text-align: center">¿Por qué quieres reportar esta cuenta? </p>
+                <div class="container">
+                    <div class="container" id="optionsCuenta">
+                        <div id="accordionCuenta" style="background-color: #212529;border-radius: 12px">
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingOneCuenta">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#collapseOneCuenta" aria-expanded="false" aria-controls="collapseOneCuenta">
+                                            Se hace pasar por otra persona
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOneCuenta" class="collapse" aria-labelledby="headingOneCuenta" data-parent="#accordionCuenta">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 La suplantación de identidad <br>
+                                        &#183 Esta cuenta se hace pasar por:  <br>
+                                        <div class="container" style="text-align: start">
+                                            <button class="buttonSend" onclick="reportar('supConozco')" style="background: none;width: auto;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px;color: white"><img src="img/right-arrow.png" style="width: 48px;height: 48px"> Alguien que conozco</button>
+                                        </div>
+                                        <div class="container" style="text-align: start">
+                                            <button class="buttonSend" onclick="reportar('suplantacion')" style="background: none;width: auto;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px;color: white"><img src="img/right-arrow.png" style="width: 48px;height: 48px"> Una organización o empresa</button>
+                                        </div>
+                                        <div class="container" style="text-align: start">
+                                            <button class="buttonSend" onclick="reportar('supCelebridad')" style="background: none;width: auto;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px;color: white"><img src="img/right-arrow.png" style="width: 48px;height: 48px"> Una celebridad o figura publica</button>
+                                        </div>
+                                        <div class="container" style="text-align: start">
+                                            <button class="buttonSend" onclick="reportar('supYo')" style="background: none;width: auto;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px;color: white"><img src="img/right-arrow.png" style="width: 48px;height: 48px"> Yo </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingTwoCuenta">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#collapseTwoCuenta" aria-expanded="false" aria-controls="collapseTwoCuenta">
+                                            Es posible que pertenezca a un menor
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwoCuenta" class="collapse" aria-labelledby="headingTwoCuenta" data-parent="#accordionCuenta">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment exige:<br><br>
+                                        &#183 Que todas las personas que quieran crear o usar una cuenta sean mayores de edad: Tienes al menos 18 años; Si las leyes del país o estado / provincia donde vive estipulan que solo puede estar legalmente vinculado por un contrato con nosotros a una edad que sea superior a los 18 años, entonces tiene la edad suficiente para estar legalmente vinculado por un contrato con nosotros bajo las leyes del país o estado / provincia donde vive<br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('cuentaMenor')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="container">
+                        <div id="accordion" style="background-color: #212529;border-radius: 12px">
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#crueldad" aria-expanded="false" aria-controls="collapseThree">
+                                            Crueldad animal
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="crueldad" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Publicar o compartir cualquier tipo de contenido que fomente o muestre cualquier tipo de 
+                                        maltrato hacia animales<br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('crueldad')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingOne" >
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Publicidad 
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Publicar o compartir cualquier tipo de publicidad ajena a Enjoy The Moment <br>
+                                        &#183 Promocionar cualquier marca comercial o empresa<br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('publicidad')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Lenguaje o simbolos que incitan al odio
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Cualquier tipo de lenguaje que incite al odio<br>
+                                        &#183 Contenido violento <br>
+                                        &#183 Grupos discriminatorios<br> 
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('lenguaje')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div></div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Violencia u organizaciones peligrosas   
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family:'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Terrorismo<br>
+                                        &#183 Grupos delictivos <br>
+                                        &#183 Grupos discriminatorios<br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('violencia')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#venta" aria-expanded="false" aria-controls="collapseThree">
+                                            Venta de articulos ilegales o regulados
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="venta" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Fomento de actividades ilicitas<br>
+                                        &#183 Venta o uso de cualquier tipo de arma <br>
+                                        &#183 Drogas y sustancias controladas<br> 
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('venta')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div></div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#acoso" aria-expanded="false" aria-controls="collapseThree">
+                                            Bullying o acoso
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="acoso" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        &#183 A mi persona<br>
+                                        &#183 Alguien que conozco <br>
+                                        &#183 Famoso/a<br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('bullying')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>                                      </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#propiedad" aria-expanded="false" aria-controls="collapseThree">
+                                            Infraccion de la propiedad intelectual
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="propiedad" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment respeta los derechos de propiedad intelectual de los demás y esperamos que usted haga lo mismo.<br>
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Publicar, compartir o enviar ningún contenido que viole o infrinja los derechos de autor, marcas comerciales u otros derechos de propiedad intelectual de otra persona. <br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('derechosAutor')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#suicidio" aria-expanded="false" aria-controls="collapseThree">
+                                            Suicidio, autolesion o transtornos alimenticios
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="suicidio" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        &#183 Suicidio <br>
+                                        &#183 autolesion<br>
+                                        &#183 Actos peligrosos <br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('suicidi')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#Fraude" aria-expanded="false" aria-controls="collapseThree">
+                                            Fraude
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="Fraude" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 La suplantación de identidad <br>
+                                        &#183 Phishing<br>
+                                        &#183 Esquema Ponzi <br>
+                                        &#183 Cualquier tipo de fraude <br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('fraude')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#Seguridad" aria-expanded="false" aria-controls="collapseThree">
+                                            Seguridad de menores
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="Seguridad" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        Enjoy The Moment prohibe:<br><br>
+                                        &#183 Comportamiento delictivo de menores de edad<br>
+                                        &#183 Abuso infantil <br>
+                                        &#183 Usuarios menores de edad<br>
+                                        &#183 Maltrato de menores<br>
+                                        &#183 Imagenes de menores desnudos o de actos sexuales de un menor<br>
+                                        &#183 Menores que consuman tabaco, alcohol u otras sustancias peligrosas<br>
+                                        &#183 Interacciones que violan los derechos <br>
+                                        &#183 Contenido que invita o coacciona a menores a compartir imagenes o comentarios sexuales
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('menores')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="background-color: #212529;border-radius: 12px">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-block text-light collapsed" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px" data-toggle="collapse" data-target="#otro" aria-expanded="false" aria-controls="collapseThree">
+                                            Otro 
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="otro" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body" style="text-align: left;font-family: 'Comic Sans MS', cursive;font-size: 22px;color: white">
+                                        <h4 style="margin-bottom: 20px">Breve descripción</h4>
+                                        <h3 id="cantCaracteres" style="font-family:'Comic Sans MS', cursive;color: white;">0/50</h3>
+                                        <h2 class="justify-content-center" id="errorCaracter" style="background: rgba(255,55,55,0.2);border-radius: 15px;text-align: center;margin-top: 0px;color: red;font-family: 'Comic Sans MS',cursive"></h2>
+                                        <textarea onkeyup="validarCaracteres(this.value)" id="descripcionReporte" class="container bg-dark texta" placeholder="Breve descripcion del reporte..." style="border-radius: 10px;color: white;font-family: 'Comic Sans MS', cursive" maxlength="50"></textarea><br>
+                                        <div class="container justify-content-center" style="text-align: center">
+                                            <button class="buttonSend" onclick="reportar('otro')" style="background: none;width: 48px;height: 48px;padding: 0px;outline: none;border:none;margin-bottom: 5px"><img src="img/right-arrow.png" style="width: 100%;height: 100%"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-compat.js"></script>
+        <script>
+                                                var firebaseConfig = {
+                                                    apiKey: "AIzaSyB9zjuIk3aupb9lxw4kdE10WELo3RflJP0",
+                                                    authDomain: "enjoy-13d08.firebaseapp.com",
+                                                    databaseURL: "https://enjoy-13d08-default-rtdb.firebaseio.com",
+                                                    projectId: "enjoy-13d08",
+                                                    storageBucket: "enjoy-13d08.appspot.com",
+                                                    messagingSenderId: "259344011433",
+                                                    appId: "1:259344011433:web:2766c0f29a97a74da5d9b8"
+                                                };
+                                                firebaseApp = firebase.initializeApp(firebaseConfig);
+                                                var auth = firebase.auth();
+                                                var fire = firebase.firestore();
+        </script>
+        <script>
+            variablesUrl = location.search.substring(1, location.search.length);
+            var decrypted = CryptoJS.TripleDES.decrypt(variablesUrl.toString(), "4379a7f1f63d50f763ad1fe333203fcb9d5e3631");
+            C = decrypted.toString(CryptoJS.enc.Utf8);
+            arrVariables = C.split(",");
+            var resultado = unescape(arrVariables[0]);
+            var resultado2 = unescape(arrVariables[1]);
+            var refURL = firebase.database().ref("reportes");
+            refURL.on("child_added", function (s) {
+                userdataIMG = s.val();
+                var uid = userdataIMG.uid;
+                if (uid === resultado) {
+                    document.getElementById("optionsCuenta").innerHTML = "";
+                    document.getElementById("accordion").innerHTML = "<h3 style='color:white;font-family:Comic Sans MS,cursive;margin:20px;text-align:center'>Ya ha sido reportada y esta en revision</h3>";
+                }
+            });
+            if (resultado2 !== 'account') {
+                mensajeReporte = document.getElementById("mensajeReporte");
+                optionsCuenta = document.getElementById("optionsCuenta");
+                mensajeReporte.innerHTML = 'Reportar';
+                optionsCuenta.innerHTML = '';
+            }
+            function reportar(m) {
+
+                if (m.toString() === "otro") {
+                    descripcion = $("#descripcionReporte").val();
+                    tamano = descripcion.length;
+                    if (tamano > 50) {
+                        document.getElementById("errorCaracter").innerHTML = "*50 max";
+                    } else {
+                        var validacion = /</;
+                        var validacion2 = />/;
+                        if (validacion.test(descripcion)) {
+                            document.getElementById("errorCaracter").innerHTML = '"<" no es un caracter valido';
+
+                        } else {
+                            if (validacion2.test(descripcion)) {
+                                document.getElementById("errorCaracter").innerHTML = '">" no es un caracter valido';
+
+                            } else {
+                                var data = {
+                                    motivo: m,
+                                    uid: resultado,
+                                    tipo: resultado2,
+                                    des: descripcion
+                                };
+                                firebase.database().ref("reportes/").push(data);
+                            }
+                        }
+                    }
+
+                } else {
+                    var data = {
+                        motivo: m,
+                        uid: resultado,
+                        tipo: resultado2
+                    };
+                    firebase.database().ref("reportes/").push(data).then(function () {
+
+                    });
+                }
+
+
+            }
+
+
+
+
+
+            function validarCaracteres(string) {
+                var filtro = "<>";
+                document.getElementById("errorCaracter").innerHTML = '';
+                for (var i = 0; i < string.length; i++) {
+                    if (filtro.indexOf(string.charAt(i)) > -1) {
+                        document.getElementById("errorCaracter").innerHTML = '< ó > no son caracteres validos';
+                    }
+                }
+                var descripcion = $("#descripcionReporte").val();
+                tamano = descripcion.length;
+                document.getElementById("cantCaracteres").innerHTML = "" + tamano + "/50";
+                if (tamano > 50) {
+                    document.getElementById("errorCaracter").innerHTML = "*50 max";
+                }
+
+            }
+
+
+        </script>
+    </body>
+</html>

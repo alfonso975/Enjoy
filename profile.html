@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="script/css/body.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        <link rel="stylesheet" href="script/css/profile1.css">   
+        <link rel="stylesheet" href="script/css/scrooll1.css">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }
+            .buttonSend:focus{
+                box-shadow: none;
+                color: white;
+                font-family: "Comic Sans MS", cursive;
+
+            }
+            .buttonSend:hover{
+                transform: scale(1.2);
+                color: white;
+                font-family: "Comic Sans MS", cursive;
+            }
+            .zoom:hover{
+                transform: scale(1.2);
+            }
+            .dropdown > .dropdown-item:hover{
+                background-color: #04242c;
+                color:white;
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                font-family: Montserrat, sans-serif;}
+            @media (min-width: 992px) {
+                .ocultar-div{
+                    display:none;
+                }
+            }
+            @media (max-width: 991px) {
+                .ocultar-nav{
+                    display:none;
+                }
+            }
+            .loader {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                /*z-index mustra este div por encima de todos*/
+                z-index: 9999;
+                background: url('img/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+                background-color: #020000;
+                align-items: center;
+                display: flex;
+                opacity: .9;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body style="background-color: #131313;
+          background-size: cover;overflow-x: hidden;
+          background-attachment: fixed"
+          class="scrol scrol-thumb">
+
+        <div style="position: fixed;top: 0px;width: 100%;display: block;padding: 0px" class="sticky-top">
+            <nav class="navbar bg-dark navbar-expand-lg navbar-toggleable-xl" style="background-color: #343a40;padding: 0px;justify-content: space-around;margin: 0px">
+
+                <div class="navbar-toggler" style="padding: 0px;justify-content: space-around;width: 100%" >
+                    <ul class="nav justify-content-around" style="padding: 0px;">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 5px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" id="button_NotT" onclick="deleteN()" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <div id="notT" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img id="imgprofile1" style="width: 30px;height: 30px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img id="downR" src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" href="tienda.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/tienda.png">Store
+                                    </a>
+                                    <a id="drop_men" class="dropdown-item text-light mb-1" onclick="deleteM()" href="#">
+                                        <img id="notificacion1" style="width: 20px;height: 20px;margin-right: 5px" src="img/mensajeW.png">Chat
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrarS">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+
+
+
+
+                    </ul>
+                </div>
+
+                <div class="navbar justify-content-center ocultar-nav bg-dark" style="padding: 0px;margin-bottom: 0px">
+                    <ul class="nav justify-content-center" style="padding: 0px">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 25px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="tienda.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/tienda.png" style="height: 33px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item " id="button_Men" onclick="deleteM()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="notificacion" src="img/mensajeW.png" style="width: 35px;height: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item nav-link" id="button_Not" onclick="deleteN()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <div id="not" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="imgprofile" style="width: 35px;height: 35px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrar">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div style="height: 55px">s </div>
+        <input id="compdataPub" class="hid" value="false" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input id="compdatalikes" class="hid" value="false" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input id="compdataMensajeria" class="hid" value="false" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input id="compdatabandeja1" class="hid" value="false" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input id="compdatabandeja2" class="hid" value="false" style="display: none" readonly="readonly" onkeypress="eliminar()">
+
+        <div class="" id="loader" style="background-color: #181b22;text-align: center;display: none">
+            <h2 id='loaderMensaje' style="font-size: 40px;text-align: center;color: #2aa58a" class="justify-content-center">
+                Actualizando datos, el tiempo de carga depende de su conexion...
+            </h2>
+        </div>
+        <div class='container justify-content-center' 
+             style='background-color: #212529;border-radius: 20px'>
+            <h2 style="color:red;text-align: center" id="errorNameG"></h2>
+            <div class='row' style='width: 100%;margin: auto'>
+                <div style="width: 100%;text-align: center;margin-top: 14px">
+                    <div id="portada" style='align-self: center;height: 200px;width:auto;background-image: url(); background-position: center;'>
+                        <div style="width: 100%;height: 0.1px;text-align: end;justify-content: flex-end">
+                            <label id="labelprofile" class="btn text-light buttonSend" style="right: 0px;text-align: center;border-color: #bcc4c3;border-radius: 15px;font-family: 'Comic Sans MS', cursive;font-size: 20px;width: 49px;height: 49px">
+                                <i class="fas fa-edit" style="text-align: center;margin-top: 8px"></i>
+                                <input type="file" id="fileP" class="btn btn-block" style="display: none;" accept="image/*">
+                            </label>
+                        </div>
+
+                        <img id='imginfo' src='img/user.png' style='align-self: center;height: 120px;width: 120px; object-fit:cover; border-radius: 200px; border-width: 5px;margin-top: 6px;margin-bottom: 6px;margin-left: 6px;margin-right: 6px'>
+                        <div>
+                            <h2 class="scrol scrol-thumb" id="presentacion" style="margin-left: 20px;margin-right: 20px;word-wrap: break-word;overflow-y: auto;height: 70px;margin-top: 0px;font-size: 19px"></h2>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="nombre_usuario" style="width: 100%;text-align: center;margin-top: 10px">
+                </div>
+                <div class="container justify-content-center">
+                    <div class="row justify-content-center">
+                        <div class="text-center" style="width: 31%;"><p style="font-weight: bold;">Enjoyers</p></div>
+                        <div class="text-center" style="width: 31%;"><p style="font-weight: bold;">Post</p></div>
+                        <div class="text-center" style="width: 31%;"><p style="font-weight: bold;">Seguidos</p></div>
+                    </div>
+                    <hr style='margin-bottom: 2px;margin-top: 0px;height: 2px;margin-left: 5%;margin-right: 5%;background-color: white;border: 0;background:linear-gradient(30deg, #1c4c9c, #FDFDFD,#1c4c9c);'>
+                    <div class="row justify-content-center">
+                        <div id="enjoyers" class="text-center zoom" style="width: 31%;" onclick="enjoyers()"></div>
+                        <div id="postC" class="text-center" style="width: 31%;"></div>
+                        <div id="sigo" class="text-center" style="width: 31%;" onclick="sigo()"></div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;text-align: center;margin-top: 14px" id="buttons">
+
+            <button id='set' value="" class='btn text-light buttonSend' onclick='settings()' style='width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px'><i class='fas fa-cog' style='margin-right: 10px'></i>Editar Perfil</button>
+            <button id='saldo' onclick="saldo()" class='btn text-light buttonSend' style='width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px'><i class='fas fa-wallet' style='margin-right: 10px'></i>Saldo</button>
+            <button id='generarLink' onclick="generarLink()" class='btn text-light buttonSend' style='width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px'><i class='far fa-share-square' style='margin-right: 10px'></i>Compartir Perfil</button>
+        </div>
+        <div class="container">
+            <div class="container-fluid justify-content-center mt-3">
+                <div id="div_Publicaciones" class="galeria">
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modaltuto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background-color: #212529;border-radius: 12px">
+                    <div class="modal-header">
+                        <div class="container-fluid justify-content-center" style="text-align: center">
+                            <h2 class="modal-title" id="exampleModalLongTitle" style="font-family: 'Comic Sans MS', cursive;color: white;font-size: 20px">Compartir link del perfil</h2>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modal-bodyLink" class="modal-body container-fluid scrol scrol-thumb justify-content-around" style="overflow-y: auto;max-height: 500px">
+                        <div class="row justify-content-center" style="text-align: center;justify-content: center">
+                            <div id="linkProfile" style="width: 90%;height: auto; word-wrap: break-word;margin-bottom: 15px;background-color: #05242c;border-radius: 15px;padding-top: 15px;padding-bottom: 15px;align-items: center;text-align: center;justify-content: center;color: white;font-family: 'Comic Sans MS',cursive">modaltuto</div>
+                            <div id="copyToClipboard" onclick="copyToClipboard()" class="zoom" style="height: 60px;width: 50px;margin-left: 15px;margin-right: 15px">
+                                <img src="img/copy.png" style="height: 50px;width: 50px">
+                                <p style="float: left;width: 50px;text-align: center">Copy</p>
+                            </div>
+                            <div id="whatsapp" onclick="whatsapp()" class="zoom" style="height: 60px;width: 50px;margin-left: 15px;margin-right: 15px">
+                                <img src="img/whatsapp.png" style="height: 50px;width: 50px">
+                                <p style="float: left;width: 50px;text-align: center">Whatsapp</p>
+                            </div>
+                        </div>
+                        <h2 id="messageCompartir" style="transition: opacity 0.8s;font-family: 'Comic Sans MS', cursive;color: white;font-size: 20px;margin-top: 25px;text-align: center"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background-color: #212529;border-radius: 12px">
+                    <div class="modal-header">
+                        <div class="container-fluid justify-content-center" style="text-align: center">
+                            <h2 class="modal-title" id="exampleModalLongTitle">Seguidores</h2>
+
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modal-body" class="modal-body container-fluid scrol scrol-thumb" style="overflow-y: auto;max-height: 500px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalCentersigo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background-color: #212529;border-radius: 12px">
+                    <div class="modal-header">
+                        <div class="container-fluid justify-content-center" style="text-align: center">
+                            <h2 class="modal-title" id="exampleModalLongTitle">Seguidos</h2>
+
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modal-bodySigo" class="modal-body container-fluid scrol scrol-thumb" style="overflow-y: auto;max-height: 500px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script/cif.js"></script>
+        <script type="text/javascript" src="script/jq.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-compat.js"></script>
+        <script>
+                                var firebaseConfig = {
+                                    apiKey: "AIzaSyB9zjuIk3aupb9lxw4kdE10WELo3RflJP0",
+                                    authDomain: "enjoy-13d08.firebaseapp.com",
+                                    databaseURL: "https://enjoy-13d08-default-rtdb.firebaseio.com",
+                                    projectId: "enjoy-13d08",
+                                    storageBucket: "enjoy-13d08.appspot.com",
+                                    messagingSenderId: "259344011433",
+                                    appId: "1:259344011433:web:2766c0f29a97a74da5d9b8"
+                                };
+                                firebaseApp = firebase.initializeApp(firebaseConfig);
+                                var auth = firebase.auth();
+                                var fire = firebase.firestore();
+
+
+
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" crossorigin="anonymous"></script>
+        <script>
+                                var nombreC;
+                                $("#cerrar").click(function () {
+                                    auth.signOut().then(function () {
+                                        window.location = "index.html";
+                                    });
+                                });
+                                $("#cerrarS").click(function () {
+                                    auth.signOut().then(function () {
+                                        window.location = "index.html";
+                                    });
+                                });
+
+
+                                $("#fileP").change(function (e) {
+                                    var storageRef = firebase.storage().ref();
+                                    var loaderMensaje = document.getElementById("loaderMensaje");
+                                    file = document.getElementById("fileP");
+                                    img = file.files[0];
+                                    if (img === undefined || img === null) {
+                                        //si es null vaciar la vista previa
+                                    } else {
+                                        let reader = new FileReader();
+                                        reader.readAsDataURL(e.target.files[0]);
+                                        reader.onload = function () {
+                                            file.src = reader.result;
+                                        };
+                                        console.log("cambio" + img);
+                                        var mensajeErrorfile = document.getElementById("errorNameG");
+                                        var file = document.getElementById("fileP");
+                                        var tamanoMax = 12000000;
+                                        if (file.files.length > 0 && file.files.length < 2) {
+                                            var archivo = file.files[0];
+                                            var tip = archivo.type;
+                                            if (tip === "image/jpeg"
+                                                    || tip === "image/gif"
+                                                    || tip === "image/png"
+                                                    || tip === "image/tiff"
+                                                    || tip === "image/pds"
+                                                    || tip === "image/bmp") {
+                                                if (archivo.size > tamanoMax) {
+                                                    const tamanioEnMb = tamanoMax / 1000000;
+                                                    mensajeErrorfile.innerHTML = 'El tamaño máximo es ' + tamanioEnMb + ' MB en profile Photo';
+                                                } else {
+                                                    auth.onAuthStateChanged(function (user) {
+                                                        if (user) {
+                                                            var mail = user.email;
+                                                            var encripta = cifrar(mail.toString());
+                                                            var correo = encripta.palabraEncriptada;
+                                                            fire.collection("IMAGENES").where("mail", "==", correo)
+                                                                    .get()
+                                                                    .then(function (querySnapshot) {
+                                                                        querySnapshot.forEach(function (doc) {
+                                                                            var fichero = document.getElementById("fileP");
+                                                                            var publicaciones = doc.data();
+                                                                            var keyStorage = publicaciones.keyStoragePortada;
+                                                                            var docR = publicaciones.uid;
+                                                                            var element = document.getElementById("loader");
+                                                                            element.style.display = 'flex';
+                                                                            element.classList.toggle("loader");
+                                                                            if (keyStorage) {
+                                                                                var desertRef = storageRef.child('imagenes/' + keyStorage + "IMGSETTINGS");
+                                                                                tamanoFichero = fichero.files.length;
+                                                                                var canvas = document.createElement('canvas');
+                                                                                var MAX_WIDTH = 950;
+                                                                                img = fichero.files[0];
+                                                                                var _URL = window.URL || window.webkitURL;
+                                                                                var imageCan = new Image();
+                                                                                imageCan.src = _URL.createObjectURL(img);
+                                                                                imageCan.onload = function () {
+                                                                                    var ancho = imageCan.width;
+                                                                                    var alto = imageCan.height;
+                                                                                    calc = ancho / alto;
+                                                                                    if (ancho > MAX_WIDTH) {
+                                                                                        ancho = MAX_WIDTH;
+                                                                                        alto = ancho / calc;
+                                                                                    }
+                                                                                    canvas.width = ancho;
+                                                                                    canvas.height = alto;
+                                                                                    var ctx = canvas.getContext("2d");
+                                                                                    ctx.drawImage(imageCan, 0, 0, ancho, alto);
+                                                                                    canvas.toBlob((blob) => {
+                                                                                        let file = new File([blob], "" + keyStorage + ".jpg", {type: "image/jpeg"});
+                                                                                        var uploadTask = desertRef.put(file);
+                                                                                        uploadTask.on('state_changed', function (snapshot) {
+                                                                                            var progress = parseInt((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                                                                                            loaderMensaje.innerHTML = 'Subiendo foto de portada ' + progress + '% por favor espere...';
+                                                                                            switch (snapshot.state) {
+                                                                                                case firebase.storage.TaskState.PAUSED:
+                                                                                                    loaderMensaje.innerHTML = 'Error la carga se ha pausado';
+                                                                                                    break;
+                                                                                                case firebase.storage.TaskState.RUNNING:
+                                                                                                    loaderMensaje.innerHTML = 'Subiendo foto de portada ' + progress + '% por favor espere...';
+                                                                                                    break;
+                                                                                            }
+                                                                                        }, function (error) {
+                                                                                        }, function () {
+                                                                                            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                                                                                                //actualizarProfile(downloadURL, keyStorage);
+                                                                                                var datanueva = {
+                                                                                                    urlP: downloadURL,
+                                                                                                    keyStoragePortada: keyStorage
+                                                                                                };
+                                                                                                fire.collection("IMAGENES").doc(docR).update(datanueva).then(function () {
+                                                                                                    location.reload();
+                                                                                                });
+                                                                                            });
+                                                                                        });
+                                                                                    }, 'image/jpeg');
+                                                                                };
+                                                                            } else {
+                                                                                var palabra = [];
+                                                                                var valores = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
+                                                                                    "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d",
+                                                                                    "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                                                                                    "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                                                                                    "-", "_"];
+                                                                                var numero = 8;
+                                                                                var numeroAleatorio;
+                                                                                for (var i = 0; i < numero; i++) {
+                                                                                    numeroAleatorio = parseInt(Math.random() * valores.length);
+                                                                                    var resultado = valores[numeroAleatorio];
+
+                                                                                    palabra.push(resultado);
+                                                                                    var palabraResultante = palabra.join('');
+                                                                                }
+                                                                                tamanoFichero = fichero.files.length;
+                                                                                var canvas = document.createElement('canvas');
+                                                                                var MAX_WIDTH = 950;
+                                                                                img = fichero.files[0];
+                                                                                var _URL = window.URL || window.webkitURL;
+                                                                                var imageCan = new Image();
+                                                                                imageCan.src = _URL.createObjectURL(img);
+                                                                                imageCan.onload = function () {
+                                                                                    var ancho = imageCan.width;
+                                                                                    var alto = imageCan.height;
+                                                                                    calc = ancho / alto;
+                                                                                    if (ancho > MAX_WIDTH) {
+                                                                                        ancho = MAX_WIDTH;
+                                                                                        alto = ancho / calc;
+                                                                                    }
+                                                                                    canvas.width = ancho;
+                                                                                    canvas.height = alto;
+                                                                                    var ctx = canvas.getContext("2d");
+                                                                                    ctx.drawImage(imageCan, 0, 0, ancho, alto);
+                                                                                    canvas.toBlob((blob) => {
+                                                                                        let file = new File([blob], "" + palabraResultante + ".jpg", {type: "image/jpeg"});
+                                                                                        var uploadTask = storageRef.child('imagenes/' + palabraResultante + "IMGSETTINGS").put(file);
+                                                                                        uploadTask.on('state_changed', function (snapshot) {
+                                                                                            var progress = parseInt((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                                                                                            loaderMensaje.innerHTML = 'Subiendo foto de portada ' + progress + '% por favor espere...';
+                                                                                            switch (snapshot.state) {
+                                                                                                case firebase.storage.TaskState.PAUSED:
+                                                                                                    loaderMensaje.innerHTML = 'Error la carga se ha pausado';
+                                                                                                    break;
+                                                                                                case firebase.storage.TaskState.RUNNING:
+                                                                                                    loaderMensaje.innerHTML = 'Subiendo foto de portada ' + progress + '% por favor espere...';
+                                                                                                    break;
+                                                                                            }
+                                                                                        }, function (error) {
+
+                                                                                        }, function () {
+                                                                                            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                                                                                                //actualizarProfile(downloadURL, palabraResultante);
+                                                                                                var datanueva = {
+                                                                                                    urlP: downloadURL,
+                                                                                                    keyStoragePortada: palabraResultante
+                                                                                                };
+                                                                                                fire.collection("IMAGENES").doc(docR).update(datanueva).then(function () {
+                                                                                                    location.reload();
+                                                                                                });
+
+                                                                                            });
+                                                                                        });
+                                                                                    }, 'image/jpeg');
+                                                                                };
+
+                                                                            }
+                                                                        });
+                                                                    });
+                                                        } else {
+                                                            location.replace("index.html");
+                                                        }
+                                                    });
+
+                                                }
+                                            } else {
+                                                mensajeErrorfile.innerHTML = 'Este formato no se reconoce';
+                                            }
+                                        }
+
+                                    }
+
+                                });
+
+
+
+                                function generarLink() {
+                                    $('#modaltuto').modal('show');
+                                    url = "https://api.whatsapp.com/send?text=https://enjoythemomentofficial.com/profile.html";
+
+
+                                }
+                                function copyToClipboard(c) {
+                                    DELAY = 500;
+                                    var ID = c.toString();
+                                    var stringUrl = ID.toString();
+                                    var url = "profileUser.html";
+                                    url += "?";
+                                    nomVec = stringUrl.split(",");
+                                    url += nomVec;
+                                    text = "https://enjoythemomentofficial.com/" + url;
+                                    const type = 'text/plain';
+                                    const blob = new Blob([text], {type});
+                                    let data = [new ClipboardItem({[type]: blob})];
+                                    navigator.clipboard.write(data).then(function () {
+                                        messageCompartir = document.getElementById("messageCompartir");
+                                        messageCompartir.style.opacity = '1';
+                                        messageCompartir.innerHTML = 'Copiado al portapapeles!';
+                                        timer = setTimeout(function () {
+                                            messageCompartir = document.getElementById("messageCompartir");
+                                            messageCompartir.style.opacity = '0';
+                                        }, DELAY);
+                                    }, function () {
+                                        messageCompartir = document.getElementById("messageCompartir");
+                                        messageCompartir.style.opacity = '1';
+                                        messageCompartir.innerHTML = 'Error no se copio';
+                                        timer = setTimeout(function () {
+                                            messageCompartir = document.getElementById("messageCompartir");
+                                            messageCompartir.style.opacity = '0';
+                                        }, DELAY);
+                                    });
+                                }
+                                function whatsapp(c) {
+                                    var ID = c.toString();
+                                    var stringUrl = ID.toString();
+                                    var url = "profileUser.html";
+                                    url += "?";
+                                    nomVec = stringUrl.split(",");
+                                    url += nomVec;
+                                    url = "https://enjoythemomentofficial.com/" + url;
+                                    url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(url);
+                                    location.href = url;
+                                }
+                                auth.onAuthStateChanged(function (user) {
+                                    if (user) {
+                                        var mail = user.email;
+                                        var encripta = cifrar(mail.toString());
+                                        var correo = encripta.palabraEncriptada;
+                                        fire.collection("IMAGENES").where("mail", "==", correo)
+                                                .get()
+                                                .then(function (querySnapshot) {
+                                                    querySnapshot.forEach(function (doc) {
+                                                        var publicaciones_User = doc.data();
+                                                        var NombreUsuario = publicaciones_User.nombre;
+                                                        var ref = firebase.database().ref("Imagenes/");
+                                                        ref.orderByChild("contadorPrincipal").on("child_added", function (snapshot) {
+                                                            var userdata = snapshot.val();
+                                                            if (correo === userdata.correoI) {
+                                                                var id = userdata.ID;
+                                                                var idFoto = "id";
+                                                                var name1 = userdata.nombreU;
+                                                                var nomvec = name1.split(" ");
+                                                                var type = userdata.type;
+                                                                var contadorImagenes = userdata.contadorImagenes;
+                                                                var url = userdata.url;
+                                                                if (contadorImagenes === "1") {
+                                                                    typeS = userdata.type;
+                                                                    if (typeS === "image/jpeg"
+                                                                            || typeS === "image/gif"
+                                                                            || typeS === "image/png"
+                                                                            || typeS === "image/bmp") {
+
+                                                                        $("#div_Publicaciones").append("<div id='a' style='display:flex;width:33.2%'><img onclick=publicacion('" + userdata.ID + "','" + type + "') class='mt-1 img_conf' src='" + userdata.url + "'/></div>");
+                                                                    } else if (typeS === "video/mp4"
+                                                                            || typeS === "video/avi"
+                                                                            || typeS === "video/wmv"
+                                                                            || typeS === "video/wma"
+                                                                            || typeS === "video/flv"
+                                                                            || typeS === "video/mkv"
+                                                                            || typeS === "video/mks") {
+                                                                        $("#div_Publicaciones").append("<div id='a' style='display:flex;width:33.2%'><video onclick=publicacion('" + userdata.ID + "','" + typeS + "') id='vi' class='mt-1 img_conf' src='" + userdata.url + "' controls></video></div>");
+                                                                    }
+                                                                } else if (contadorImagenes > 1) {
+                                                                    var separador = "-";
+                                                                    limite = contadorImagenes;
+                                                                    arregloDeSubCadenas = type.split(separador, limite);
+                                                                    var separadorUrl = "*";
+                                                                    limiteUrl = contadorImagenes;
+                                                                    arregloDeSubCadenasUrl = url.split(separadorUrl, limiteUrl);
+                                                                }
+                                                                if (contadorImagenes > 1) {
+                                                                    if (arregloDeSubCadenas[0] === "video/mp4"
+                                                                            || arregloDeSubCadenas[0] === "video/avi"
+                                                                            || arregloDeSubCadenas[0] === "video/wmv"
+                                                                            || arregloDeSubCadenas[0] === "video/wma"
+                                                                            || arregloDeSubCadenas[0] === "video/flv"
+                                                                            || arregloDeSubCadenas[0] === "video/mkv"
+                                                                            || arregloDeSubCadenas[0] === "video/mks") {
+                                                                        $("#div_Publicaciones").append("<div id='a' style='display:flex;width:33.2%'><video onclick=publicacion('" + userdata.ID + "','" + type + "') id='vi' class='mt-1 img_conf' src='" + arregloDeSubCadenasUrl[0] + "' controls></video><div style='position: absolute;text-align: right;'><img src='img/multi.png' style='width:40px'></div></div>");
+                                                                    } else if (arregloDeSubCadenas[0] === "image/jpeg"
+                                                                            || arregloDeSubCadenas[0] === "image/gif"
+                                                                            || arregloDeSubCadenas[0] === "image/png"
+                                                                            || arregloDeSubCadenas[0] === "image/bmp") {
+                                                                        $("#div_Publicaciones").append("<div id='a' style='display:flex;width:33.2%'><img onclick=publicacion('" + userdata.ID + "','" + type + "') class='mt-1 img_conf' src='" + arregloDeSubCadenasUrl[0] + "'/><div style='position: absolute;text-align: right;'><img src='img/multi.png' style='width:40px'></div></div>");
+                                                                    }
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                    } else {
+                                        location.replace("index.html");
+                                    }
+                                });
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .get()
+                            .then(function (querySnapshot) {
+                                querySnapshot.forEach(function (doc) {
+                                    var publicaciones = doc.data();
+                                    presentacion = publicaciones.presentacion;
+                                    nombreC = publicaciones.nombre;
+                                    foto = publicaciones.foto;
+                                    document.getElementById("linkProfile").innerHTML = 'https://enjoythemomentofficial.com/profileUser.html?' + nombreC + '';
+                                    if (foto === "undefined" || foto === "" || foto === undefined) {
+                                    } else {
+                                        $("#imgprofile").attr("src", foto);
+                                        $("#imgprofile1").attr("src", foto);
+                                        $("#imginfo").attr("src", foto);
+                                    }
+                                    $("#whatsapp").attr("onclick", "whatsapp('" + publicaciones.nombre + "')");
+                                    $("#copyToClipboard").attr("onclick", "copyToClipboard('" + publicaciones.nombre + "')");
+                                    document.getElementById("presentacion").innerHTML = presentacion;
+                                    if (publicaciones.cuentaVerificada) {
+                                        $("#nombre_usuario").append("<h2>" + publicaciones.nombre + "<img src='img/checkedBlue.png' style='width: 25px;height: 25px;margin-left: 8px'></h2>");
+                                    } else {
+                                        $("#nombre_usuario").append("<h2>" + publicaciones.nombre + "</h2>");
+                                    }
+
+                                    $("#portada").css('background-image', "url(" + publicaciones.urlP + ")");
+                                    var sigo = publicaciones.sigo;
+                                    if (sigo === undefined) {
+                                        $("#sigo").append("<p>0</p>");
+                                    } else {
+                                        $("#sigo").append("<p>" + sigo + "</p>");
+                                    }
+                                    var contSeg = publicaciones.contSeg;
+                                    if (contSeg === undefined) {
+                                        $("#enjoyers").append("<p>0</p>");
+                                    } else {
+                                        $("#enjoyers").append("<p>" + contSeg + "</p>");
+                                    }
+                                    post = publicaciones.post;
+                                    if (post === undefined) {
+                                        $("#postC").append("<p>0</p>");
+                                    } else {
+                                        $("#postC").append("<p>" + post + "</p>");
+                                    }
+                                    $("#set").attr("value", publicaciones.mail);
+                                    if (contSeg > 0) {
+                                        var seguidores = publicaciones.seguidores;
+                                        var separador = "*";
+                                        limite = contSeg;
+                                        arregloDeSubCadenas = seguidores.split(separador, limite);
+                                        var contador = 0;
+                                        for (var w = 0; w < contSeg; w++) {
+                                            fire.collection("IMAGENES").where("mail", "==", arregloDeSubCadenas[w])
+                                                    .get()
+                                                    .then(function (querySnapshot) {
+                                                        querySnapshot.forEach(function (doc) {
+                                                            var seguidoresData = doc.data();
+                                                            var name = seguidoresData.nombre;
+                                                            var fotoP = seguidoresData.foto;
+                                                            $("#modal-body").append("\
+                                                <div class='container-fluid' style='margin-bottom:5px'>\n\
+                                                    <div class='row'>\n\
+                                                        <div style='max-width: 45px'><img src='" + fotoP + "' style='width: 45px;height: 45px;border-radius: 200px;object-fit:cover;'></div>\n\
+                                                        <div class='col' style='align-items: center;'>\n\
+<div style='float:left;display: flex;align-items: center;max-height:100%;max-width:60%;overflow:hidden;position:absolute'><h2 style='margin: 0px;max-width:100%;overflow:hidden'>" + name + "</h2></div>\n\
+                                                            <div style='float:right;display: flex;align-items: center;height:100%'>\n\
+                                                                <button class='btn text-light' style='width: auto;border-color: #bcc4c3;border-radius:200px;' onclick=profile('" + name + "')><i class='fas fa-user'></i></button>\n\
+                                                            </div>\n\
+                                                        </div>\n\
+                                                    </div>\n\
+                                                </div>");
+                                                            contador++;
+                                                        });
+                                                    }).catch(function (error) {
+                                            });
+                                        }
+                                    } else {
+                                    }
+
+                                    if (sigo > 0) {
+                                        var seguidos = publicaciones.seguidos;
+                                        var separador = "*";
+                                        limite = sigo;
+                                        arregloDeSubCadenasSigo = seguidos.split(separador, limite);
+                                        var contadorSigo = 0;
+                                        for (var w = 0; w < sigo; w++) {
+                                            fire.collection("IMAGENES").where("mail", "==", arregloDeSubCadenasSigo[w])
+                                                    .get()
+                                                    .then(function (querySnapshot) {
+                                                        querySnapshot.forEach(function (doc) {
+                                                            var seguidoresData = doc.data();
+                                                            var name = seguidoresData.nombre;
+                                                            var fotoP = seguidoresData.foto;
+                                                            $("#modal-bodySigo").append("\
+                                                <div class='container-fluid' style='margin-bottom:5px'>\n\
+                                                    <div class='row'>\n\
+                                                        <div style='max-width: 45px'><img src='" + fotoP + "' style='width: 45px;height: 45px;border-radius: 200px;object-fit:cover;'></div>\n\
+                                                        <div class='col' style='align-items: center;'>\n\
+<div style='float:left;display: flex;align-items: center;max-height:100%;max-width:60%;overflow:hidden;position:absolute'><h2 style='margin: 0px;max-width:100%;overflow:hidden'>" + name + "</h2></div>\n\
+                                                            <div style='float:right;display: flex;align-items: center;height:100%'>\n\
+                                                                <button class='btn text-light' style='width: auto;border-color: #bcc4c3;border-radius:200px;' onclick=profile('" + name + "')><i class='fas fa-user'></i></button>\n\
+                                                            </div>\n\
+                                                        </div>\n\
+                                                    </div>\n\
+                                                </div>");
+                                                            contadorSigo++;
+                                                        });
+                                                    }).catch(function (error) {
+                                            });
+                                        }
+                                    } else {
+                                    }
+                                });
+                            })
+                            .catch(function (error) {
+                            });
+                } else {
+                }
+            });
+            function enjoyers() {
+                $('#exampleModalCenter').modal('show');
+            }
+            function sigo() {
+                $('#exampleModalCentersigo').modal('show');
+            }
+            function eliminar() {
+                location.reload();
+            }
+            function eliminarCuenta() {
+                $('#modalEliminarCuenta').modal('show');
+            }
+            function profile(n) {
+                if (nombreC === n.toString()) {
+                    location.href = "profile.html";
+                } else if (nombreC !== n.toString()) {
+                    var stringUrl = n.toString();
+                    var url = "profileUser.html";
+                    url += "?";
+                    nomVec = stringUrl.split(",");
+                    url += nomVec;
+                    location.href = url;
+                }
+            }
+            function saldo() {
+                var url = "cuenta.html";
+                location.href = url;
+            }
+            function settings() {
+                var url = "settings.html";
+                location.href = url;
+            }
+
+        </script>
+        <script>
+            var imgp = document.getElementById("imginfo");
+            var w = imgp.height;
+            imgp.width = w;
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script>
+            function deleteN(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+                    docref.update({
+                        new : firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "notificaciones.html";
+                        location.href = url;
+                    });
+                } else {
+                    var url = "notificaciones.html";
+                    location.href = url;
+                }
+            }
+            function deleteM(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+                    docref.update({
+                        newM: firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "bandejaEntrada.html";
+                        location.href = url;
+                    });
+                } else {
+                    var url = "bandejaEntrada.html";
+                    location.href = url;
+                }
+            }
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .onSnapshot(function (querySnapshot) {
+                                var cities = [];
+                                querySnapshot.forEach(function (doc) {
+                                    publicaciones = doc.data();
+                                    if (correo === publicaciones.mail) {
+                                        newN = publicaciones.new;
+                                        newC = publicaciones.newC;
+                                        newD = publicaciones.newD;
+                                        var uid = publicaciones.uid;
+                                        cities.push(newN + " : " + newC + " : " + uid);
+                                        if (publicaciones.new) {
+                                            $("#button_Not").attr("onclick", "deleteN('" + uid + "')");
+                                            $("#button_NotT").attr("onclick", "deleteN('" + uid + "')");
+                                            divNot = document.getElementById("not");
+                                            divNotTog = document.getElementById("notT");
+                                            withN = 35;
+                                            heightW = 35;
+                                            withNT = 30;
+                                            heightWT = 30;
+                                            divNot.innerHTML = '';
+                                            divNotTog.innerHTML = '';
+
+
+                                            $("#notT").append("<img style='width: " + withNT + "px;height: " + heightWT + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                            $("#not").append("<img style='width: " + withN + "px;height: " + heightW + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                        }
+                                        if (publicaciones.newM) {
+                                            $("#notificacion").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#notificacion1").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#downR").attr("src", "img/downR.png");
+                                            $("#button_Men").attr("onclick", "deleteM('" + uid + "')");
+                                            $("#drop_men").attr("onclick", "deleteM('" + uid + "')");
+                                        }
+                                    } else {
+                                    }
+                                });
+                            });
+                }
+            });
+            function publicacion(id, t) {
+                var1 = id.concat("," + t);
+                var url = "comentarios.html";
+                url += "?";
+                nomVec = var1.split(",");
+                for (i = 0; i < nomVec.length; i++) {
+                    url += escape(nomVec[i]) + "=" + escape(nomVec[i]) + "&";
+                }
+                url = url.substring(0, url.length - 1);
+                location.href = url;
+            }
+        </script>
+
+
+    </body>
+</html>

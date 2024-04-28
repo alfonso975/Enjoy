@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="script/css/body.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        <link rel="stylesheet" href="script/css/profile1.css">   
+        <link rel="stylesheet" href="script/css/scrooll1.css">
+        <script src="https://js.stripe.com/v3/"></script>
+        <style>
+            .out:focus{
+                box-shadow: none;
+                outline: none;
+            }
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }
+            .btO:focus{
+                outline: none;
+                box-shadow: none;
+            }
+            .zoom:hover{
+                transform: scale(1.2);
+            }
+            .dropdown > .dropdown-item:hover{
+                background-color: #04242c;
+                color:white;
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                font-family: Montserrat, sans-serif;}
+            @media (min-width: 992px) {
+                .ocultar-div{
+                    display:none;
+                }
+            }
+            @media (max-width: 991px) {
+                .ocultar-nav{
+                    display:none;
+                }
+            }
+            .loader {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('img/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+                background-color: #020000;
+                align-items: center;
+                display: flex;
+                opacity: .9;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body style="background-color: #131313;
+          background-size: cover;overflow-x: hidden;
+          background-attachment: fixed"
+          class="scrol scrol-thumb">
+        <div style="position: fixed;top: 0px;width: 100%;display: block;padding: 0px" class="sticky-top">
+            <nav class="navbar bg-dark navbar-expand-lg navbar-toggleable-xl" style="background-color: #343a40;padding: 0px;justify-content: space-around;margin: 0px">
+
+                <div class="navbar-toggler" style="padding: 0px;justify-content: space-around;width: 100%" >
+                    <ul class="nav justify-content-around" style="padding: 0px;">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 5px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" id="button_NotT" onclick="deleteN()" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <div id="notT" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img id="imgprofile1" style="width: 30px;height: 30px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img id="downR" src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" href="tienda.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/tienda.png">Store
+                                    </a>
+                                    <a id="drop_men" class="dropdown-item text-light mb-1" onclick="deleteM()" href="#">
+                                        <img id="notificacion1" style="width: 20px;height: 20px;margin-right: 5px" src="img/mensajeW.png">Chat
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrarS">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar justify-content-center ocultar-nav bg-dark" style="padding: 0px;margin-bottom: 0px">
+                    <ul class="nav justify-content-center" style="padding: 0px">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 25px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="tienda.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/tienda.png" style="height: 33px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item " id="button_Men" onclick="deleteM()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="notificacion" src="img/mensajeW.png" style="width: 35px;height: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item nav-link" id="button_Not" onclick="deleteN()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <div id="not" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="imgprofile" style="width: 35px;height: 35px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrar">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="" id="loader" style="background-color: #181b22;text-align: center;display: none">
+            <h2 id='loaderMensaje' style="font-size: 40px;text-align: center;color: #2aa58a" class="justify-content-center">
+                Actualizando datos, el tiempo de carga depende de su conexion...
+            </h2>
+        </div>
+        <div style="height: 55px">s </div>
+        <div class='container justify-content-center' 
+             style='background-color: #212529;border-radius: 20px;margin-top: 20px'>
+            <div class='row' style='width: 100%;margin: auto'>
+                <div style="width: 100%;text-align: center;margin-top: 14px">
+                    <div id="portada" style='align-self: center;height: 200px;width:auto;background-image: url(); background-position: center;'>
+                        <img id='imginfo' src='img/user.png' style='align-self: center;height: 120px;width: 120px; object-fit:cover; border-radius: 200px; border-width: 5px;margin-top: 6px;margin-bottom: 6px;margin-left: 6px;margin-right: 6px'>
+                        <div>
+                            <h2 class="scrol scrol-thumb" id="presentacion" style="margin-left: 20px;margin-right: 20px;word-wrap: break-word;overflow-y: auto;height: 70px;margin-top: 0px;font-size: 19px"></h2>
+                        </div>
+                    </div>
+                </div>
+                <div id="nombre_usuario" style="width: 100%;text-align: center;margin-top: 10px">
+                </div>
+                <div class="container justify-content-center">
+                    <div class="row justify-content-center">
+                        <div class="text-center" style="width: 31%;"><p style="font-weight: bold;">Enjoyers</p></div>
+                        <div class="text-center" style="width: 31%;"><p style="font-weight: bold;">Post</p></div>
+                        <div class="text-center" style="width: 31%;"><p style="font-weight: bold;">Seguidos</p></div>
+                    </div>
+                    <hr style='margin-bottom: 2px;margin-top: 0px;height: 2px;margin-left: 5%;margin-right: 5%;background-color: white;border: 0;background:linear-gradient(30deg, #1c4c9c, #FDFDFD,#1c4c9c);'>
+                    <div class="row justify-content-center">
+                        <div id="enjoyers" class="text-center" style="width: 31%;"></div>
+                        <div id ="postC" class="text-center" style="width: 31%;"></div>
+                        <div id="sigo" class="text-center" style="width: 31%;"></div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="justify-content: center;width: 100%;text-align: center;margin-top: 14px" id="buttons">
+        </div>
+        <div class="container">
+            <div class="container">
+                <p id="susActiva" style="text-align: center;color: white;font-family: 'Comic Sans MS',cursive"></p>
+            </div>
+        </div>
+        <div class="container justify-content-center mt-3">
+            <div id="div_Publicaciones" class="galeria text-center " style="text-align: center">
+                <div id="pago" class="container justify-content-center" style="text-align: center;border-radius: 25px;display: none">
+                    <div class="row" style="justify-content: space-around">
+                        <button id="completar" class='btn text-light' style="width: 46%;border-color: #300c43;margin-bottom: 10px;
+                                background-image: url('img/gradient (1).png');border-radius: 10px;opacity: 1;
+                                box-shadow: 2px 2px 5px #9545c4;font-size: 20px;font-family:'Comic Sans MS', cursive, sans-serif;"
+                                >
+                            Completar restante con tarjeta<br><img src="img/wallet.png" style="width: 35px;margin-right: 4px"></button>
+                    </div>
+                    <div class="row mt-2">
+                        <img src="img/gradient (1).png" style="border-radius: 20px;max-width: 100%;box-shadow: 2px 2px 5px #9545c4;">
+                    </div>
+                </div>
+                <h1 class="text-center justify-content-center" id="registro" style="display: block;font-family: 'Comic Sans MS', cursive;font-size: 25px;width: 100%"></h1>
+            </div>
+        </div>
+        <input type="text" value="" id="idChat" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input type="text" value="" id="correoE" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input type="text" value="" id="correoR" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input type="text" value="" id="urlE" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input type="text" value="" id="urlR" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <input type="text" value="" id="nombreReceptor" style="display: none" readonly="readonly" onkeypress="eliminar()"> 
+        <input type="number" value="" id="susM" style="display: none" readonly="readonly" onkeypress="eliminar()">
+        <script src="script/cif.js"></script>
+        <script type="text/javascript" src="script/jq.js"></script>
+        <script src="https://momentjs.com/downloads/moment.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js" crossorigin="anonymous" ></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-compat.js"></script>
+
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyB9zjuIk3aupb9lxw4kdE10WELo3RflJP0",
+                authDomain: "enjoy-13d08.firebaseapp.com",
+                databaseURL: "https://enjoy-13d08-default-rtdb.firebaseio.com",
+                projectId: "enjoy-13d08",
+                storageBucket: "enjoy-13d08.appspot.com",
+                messagingSenderId: "259344011433",
+                appId: "1:259344011433:web:2766c0f29a97a74da5d9b8"
+            };
+            firebaseApp = firebase.initializeApp(firebaseConfig);
+            var auth = firebase.auth();
+            var fire = firebase.firestore();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" crossorigin="anonymous"></script>
+        <script>
+
+            function eliminar() {
+                location.reload();
+            }
+            $("#cerrar").click(function () {
+                auth.signOut().then(function () {
+                    window.location = "index.html";
+                });
+            });
+            $("#cerrarS").click(function () {
+                auth.signOut().then(function () {
+                    window.location = "index.html";
+                });
+            });
+            $(document).ready(deleteSus());
+            function deleteSus() {
+                auth.onAuthStateChanged(function (user) {
+                    if (user) {
+                        var mail = user.email;
+                        var encripta = cifrar(mail.toString());
+                        var correo = encripta.palabraEncriptada;
+                        fire.collection("FECHAS").where("correoI", "==", correo)
+                                .get()
+                                .then(function (querySnapshot) {
+                                    var CI = correo;
+                                    var fechaT;
+                                    var CS;
+                                    querySnapshot.forEach(function (doc) {
+                                        IDE = doc.id;
+                                        var publicaciones = doc.data();
+                                        fechaT = publicaciones.fechaTerminacion;
+                                        CS = publicaciones.correoS;
+                                        var aestTime = new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"});
+                                        aestTime = new Date(aestTime);
+                                        var newDateOptions = {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric"
+                                        };
+                                        var fecha1 = aestTime.toLocaleString("en-US", newDateOptions);
+                                        arrFecha = fecha1.toString();
+                                        separador = "/";
+                                        var arrayDeCadenas = arrFecha.split(separador);
+                                        mes = arrayDeCadenas[0];
+                                        dia = arrayDeCadenas[1];
+                                        year = arrayDeCadenas[2];
+                                        fechaFormat1 = "" + year + "-" + mes + "-" + dia + "";
+                                        var fecha11 = moment(fechaFormat1);
+                                        var fecha22 = moment(fechaT);
+                                        var diferencia = parseInt(fecha11.diff(fecha22, 'days'));
+                                        if (diferencia > 0 || diferencia < -30) {
+                                            fire.collection("FECHAS").doc(IDE).delete().then(function () {
+                                                dejarSeguir(CI, CS);
+                                            });
+                                        }
+                                    }
+                                    );
+                                });
+                        fire.collection("FECHAS").where("correoS", "==", correo)
+                                .get()
+                                .then(function (querySnapshot) {
+                                    var CS = correo;
+                                    var fechaTS;
+                                    var CI;
+                                    querySnapshot.forEach(function (doc) {
+                                        IDE = doc.id;
+                                        var publicaciones = doc.data();
+                                        fechaTS = publicaciones.fechaTerminacion;
+                                        CI = publicaciones.correoI;
+                                        var aestTime = new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"});
+                                        aestTime = new Date(aestTime);
+                                        var newDateOptions = {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric"
+                                        };
+                                        var fecha1 = aestTime.toLocaleString("en-US", newDateOptions);
+                                        arrFecha = fecha1.toString();
+                                        separador = "/";
+                                        var arrayDeCadenas = arrFecha.split(separador);
+                                        mes = arrayDeCadenas[0];
+                                        dia = arrayDeCadenas[1];
+                                        year = arrayDeCadenas[2];
+                                        fechaFormat1 = "" + year + "-" + mes + "-" + dia + "";
+                                        var fecha11 = moment(fechaFormat1);
+                                        var fecha22 = moment(fechaTS);
+                                        var diferencia = parseInt(fecha11.diff(fecha22, 'days'));
+                                        if (diferencia > 0 || diferencia < -30) {
+                                            fire.collection("FECHAS").doc(IDE).delete().then(function () {
+                                                dejarSeguir(CI, CS);
+                                            });
+                                        }
+                                    });
+                                });
+                    } else {
+                        location.replace("index.html");
+                    }
+                });
+            }
+            function dejarSeguir(CI, CS) {
+                var arregloSeg = "";
+                fire.collection("IMAGENES").where("mail", "==", CI)
+                        .get()
+                        .then(function (querySnapshot) {
+                            querySnapshot.forEach(function (doc) {
+                                var publicaciones = doc.data();
+                                doc = publicaciones.uid;
+                                var docRef = fire.collection('IMAGENES').doc(doc);
+                                var contSeg = publicaciones.contSeg;
+                                url = publicaciones.foto;
+                                nombre = publicaciones.nombre;
+                                if (contSeg > 0) {
+                                    var seguidores = publicaciones.seguidores;
+                                    var separador = "*";
+                                    limite = contSeg;
+                                    arregloDeSubCadenas = seguidores.split(separador, limite);
+                                    for (var w = 0; w < contSeg; w++) {
+                                        if (CS === arregloDeSubCadenas[w]) {
+                                            arregloDeSubCadenas.splice(w, 1);
+                                        }
+                                    }
+                                    contSeg = contSeg - 1;
+                                    for (var i = 0; i < contSeg; i++) {
+                                        arregloSeg = arregloSeg.concat(arregloDeSubCadenas[i] + "*");
+                                    }
+                                    arregloSeg = arregloSeg.substring(0, arregloSeg.length - 1);
+                                    seguidores = arregloSeg;
+                                    var newData = {
+                                        seguidores: seguidores,
+                                        contSeg: contSeg
+                                    };
+                                    docRef.update(newData).then(function () {
+                                        fire.collection("IMAGENES").where("mail", "==", CS)
+                                                .get()
+                                                .then(function (querySnapshot) {
+                                                    querySnapshot.forEach(function (doc) {
+                                                        var publicacionesCS = doc.data();
+                                                        var seguidos = publicacionesCS.seguidos;
+                                                        var cantSeguidos = publicacionesCS.sigo;
+                                                        numNot = publicacionesCS.contNot;
+                                                        numrest = numNot - 1;
+                                                        var separador = "*";
+                                                        limite = cantSeguidos;
+                                                        arregloDeSubCadenas = seguidos.split(separador, limite);
+                                                        for (var w = 0; w < cantSeguidos; w++) {
+                                                            if (CS === arregloDeSubCadenas[w]) {
+                                                                arregloDeSubCadenas.splice(w, 1);
+                                                            }
+                                                        }
+                                                        cantSeguidos = cantSeguidos - 1;
+                                                        for (var i = 0; i < cantSeguidos; i++) {
+                                                            arregloSeg = arregloSeg.concat(arregloDeSubCadenas[i] + "*");
+                                                        }
+                                                        arregloSeg = arregloSeg.substring(0, arregloSeg.length - 1);
+                                                        seguidos = arregloSeg;
+                                                        var newData = {
+                                                            correoFoto: CS,
+                                                            deleteSus: nombre,
+                                                            url: url,
+                                                            contNotificacion: numrest
+                                                        };
+
+                                                        var newNot = {
+                                                            new : 1,
+                                                            seguidos: seguidos,
+                                                            sigo: cantSeguidos
+                                                        };
+                                                        docCS = publicacionesCS.uid;
+                                                        var docRef = fire.collection('IMAGENES').doc(docCS);
+                                                        docRef.update(newNot).then(function () {
+                                                            firebase.database().ref("likes/").push(newData).then(function () {
+                                                                var ref = firebase.database().ref("Imagenes");
+                                                                ref.on("child_added", function (s) {
+                                                                    userdata = s.val();
+                                                                    if (userdata.correoI === CI) {
+                                                                        var keys = s.key;
+                                                                        var refTab = firebase.database().ref("Imagenes/").child(keys);
+                                                                        refTab.update(newData);
+                                                                    }
+                                                                });
+                                                                setTimeout(function () {
+                                                                    location.reload();
+                                                                }, 2000);
+                                                            });
+                                                        });
+                                                    });
+                                                });
+                                    });
+                                }
+                            });
+                        });
+            }
+
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    $(document).ready(function () {
+                        variablesUrl = location.search.substring(1, location.search.length);
+                        if (variablesUrl === "RECARGA_SALDO") {
+                            location.replace("tienda.html");
+                        } 
+                        fire.collection("IMAGENES").where("nombre", "==", variablesUrl.toString())
+                                .get()
+                                .then(function (querySnapshot) {
+                                    var C;
+                                    querySnapshot.forEach(function (doc) {
+                                        var publicaciones = doc.data();
+                                        C = publicaciones.mail;
+                                    });
+
+                                    var mail = user.email;
+                                    var encripta = cifrar(mail.toString());
+                                    var correo = encripta.palabraEncriptada;
+
+
+
+                                    var ref = firebase.database().ref("Imagenes/");
+                                    ref.orderByChild("contadorPrincipal").on("child_added", function (snapshot) {
+                                        var userdata = snapshot.val();
+                                        correoI = userdata.correoI;
+                                        ID = userdata.ID;
+                                        urlSrc = userdata.url;
+                                        if (correoI === C) {
+                                            $("#div_Publicaciones").append("<div id='cajaPublicion_" + ID + "' style='display:flex;width:33.2%;'><img id='publicacion_" + ID + "' class='mt-1 img_conf' src='img/Pcover.png'/></div>");
+                                        }
+                                    });
+
+                                    fire.collection("IMAGENES").where("mail", "==", C)
+                                            .get()
+                                            .then(function (querySnapshot) {
+                                                querySnapshot.forEach(function (doc) {
+                                                    var publicaciones = doc.data();
+                                                    doc = publicaciones.uid;
+                                                    var contSeg = publicaciones.contSeg;
+                                                    if (contSeg > 0) {
+                                                        var seguidores = publicaciones.seguidores;
+                                                        var separador = "*";
+                                                        limite = contSeg;
+                                                        arregloDeSubCadenas = seguidores.split(separador, limite);
+                                                        for (var w = 0; w < contSeg; w++) {
+                                                            if (correo === arregloDeSubCadenas[w]) {
+                                                                document.getElementById("registro").style.display = "none";
+                                                                var ref = firebase.database().ref("Imagenes/");
+                                                                ref.orderByChild("contadorPrincipal").on("child_added", function (snapshot) {
+                                                                    var userdata = snapshot.val();
+                                                                    correoI = userdata.correoI;
+                                                                    if (correoI === C) {
+
+                                                                        var type = userdata.type;
+                                                                        var contadorImagenes = userdata.contadorImagenes;
+                                                                        ID = userdata.ID;
+                                                                        var url = userdata.url;
+                                                                        if (contadorImagenes === "1") {
+                                                                            typeS = userdata.type;
+                                                                            if (typeS === "image/jpeg"
+                                                                                    || typeS === "image/gif"
+                                                                                    || typeS === "image/png"
+                                                                                    || typeS === "image/bmp") {
+                                                                                document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                                $("#cajaPublicion_" + ID + "").append("<img onclick=publicacion('" + userdata.ID + "','" + type + "') class='mt-1 img_conf' src='" + url + "'/>");
+                                                                            } else if (typeS === "video/mp4"
+                                                                                    || typeS === "video/avi"
+                                                                                    || typeS === "video/wmv"
+                                                                                    || typeS === "video/wma"
+                                                                                    || typeS === "video/flv"
+                                                                                    || typeS === "video/mkv"
+                                                                                    || typeS === "video/mks") {
+                                                                                document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                                $("#cajaPublicion_" + ID + "").append("<video onclick=publicacion('" + userdata.ID + "','" + typeS + "') id='vi' class='mt-1 img_conf' src='" + url + "' controls></video>");
+                                                                            }
+                                                                        } else if (contadorImagenes > 1) {
+                                                                            var separador = "-";
+                                                                            limite = contadorImagenes;
+                                                                            arregloDeSubCadenas = type.split(separador, limite);
+                                                                            var separadorUrl = "*";
+                                                                            limiteUrl = contadorImagenes;
+                                                                            arregloDeSubCadenasUrl = url.split(separadorUrl, limiteUrl);
+                                                                        }
+
+                                                                        if (contadorImagenes > 1) {
+                                                                            if (arregloDeSubCadenas[0] === "video/mp4"
+                                                                                    || arregloDeSubCadenas[0] === "video/avi"
+                                                                                    || arregloDeSubCadenas[0] === "video/wmv"
+                                                                                    || arregloDeSubCadenas[0] === "video/wma"
+                                                                                    || arregloDeSubCadenas[0] === "video/flv"
+                                                                                    || arregloDeSubCadenas[0] === "video/mkv"
+                                                                                    || arregloDeSubCadenas[0] === "video/mks") {
+                                                                                document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                                $("#cajaPublicion_" + ID + "").append("<video onclick=publicacion('" + userdata.ID + "','" + type + "') id='vi' class='mt-1 img_conf' src='" + arregloDeSubCadenasUrl[0] + "' controls></video><div style='position: absolute;text-align: right;'><img src='img/multi.png' style='width:40px'></div>");
+                                                                            } else if (arregloDeSubCadenas[0] === "image/jpeg"
+                                                                                    || arregloDeSubCadenas[0] === "image/gif"
+                                                                                    || arregloDeSubCadenas[0] === "image/png"
+                                                                                    || arregloDeSubCadenas[0] === "image/bmp") {
+                                                                                document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                                $("#cajaPublicion_" + ID + "").append("<img onclick=publicacion('" + userdata.ID + "','" + type + "') class='mt-1 img_conf' src='" + arregloDeSubCadenasUrl[0] + "'/><div style='position: absolute;text-align: right;'><img src='img/multi.png' style='width:40px'></div>");
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+                                                    var correoPublicacion = publicaciones.mail;
+                                                    var ref = firebase.database().ref("Imagenes/");
+                                                    ref.orderByChild("contadorPrincipal").on("child_added", function (snapshot) {
+                                                        var userdata = snapshot.val();
+                                                        correoI = userdata.correoI;
+                                                        if (correoI === correoPublicacion) {
+                                                            document.getElementById("registro").style.display = "none";
+                                                            var mode = userdata.mode;
+                                                            if (mode === "public" || correoI === "0011100111011001110010011111100101101101000111010100100100111001011110011111100101111001001110011101100100011101111110011001100110011001011010011010100101101001001010010101100100001000101110010111100100101001011010010101100111010001101010011111100101111001") {
+                                                                var type = userdata.type;
+                                                                var contadorImagenes = userdata.contadorImagenes;
+                                                                var url = userdata.url;
+                                                                if (contadorImagenes === "1") {
+                                                                    typeS = userdata.type;
+                                                                    if (typeS === "image/jpeg"
+                                                                            || typeS === "image/gif"
+                                                                            || typeS === "image/png"
+                                                                            || typeS === "image/bmp") {
+                                                                        document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                        $("#cajaPublicion_" + ID + "").append("<img onclick=publicacion('" + userdata.ID + "','" + type + "') class='mt-1 img_conf' src='" + url + "'/>");
+                                                                    } else if (typeS === "video/mp4"
+                                                                            || typeS === "video/avi"
+                                                                            || typeS === "video/wmv"
+                                                                            || typeS === "video/wma"
+                                                                            || typeS === "video/flv"
+                                                                            || typeS === "video/mkv"
+                                                                            || typeS === "video/mks") {
+                                                                        document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                        $("#cajaPublicion_" + ID + "").append("<video onclick=publicacion('" + userdata.ID + "','" + typeS + "') id='vi' class='mt-1 img_conf' src='" + url + "' controls></video>");
+                                                                    }
+                                                                } else if (contadorImagenes > 1) {
+                                                                    var separador = "-";
+                                                                    limite = contadorImagenes;
+                                                                    arregloDeSubCadenas = type.split(separador, limite);
+                                                                    var separadorUrl = "*";
+                                                                    limiteUrl = contadorImagenes;
+                                                                    arregloDeSubCadenasUrl = url.split(separadorUrl, limiteUrl);
+                                                                }
+
+                                                                if (contadorImagenes > 1) {
+                                                                    if (arregloDeSubCadenas[0] === "video/mp4"
+                                                                            || arregloDeSubCadenas[0] === "video/avi"
+                                                                            || arregloDeSubCadenas[0] === "video/wmv"
+                                                                            || arregloDeSubCadenas[0] === "video/wma"
+                                                                            || arregloDeSubCadenas[0] === "video/flv"
+                                                                            || arregloDeSubCadenas[0] === "video/mkv"
+                                                                            || arregloDeSubCadenas[0] === "video/mks") {
+                                                                        document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                        $("#cajaPublicion_" + ID + "").append("<video onclick=publicacion('" + userdata.ID + "','" + type + "') id='vi' class='mt-1 img_conf' src='" + arregloDeSubCadenasUrl[0] + "' controls></video><div style='position: absolute;text-align: right;'><img src='img/multi.png' style='width:40px'></div>");
+                                                                    } else if (arregloDeSubCadenas[0] === "image/jpeg"
+                                                                            || arregloDeSubCadenas[0] === "image/gif"
+                                                                            || arregloDeSubCadenas[0] === "image/png"
+                                                                            || arregloDeSubCadenas[0] === "image/bmp") {
+                                                                        document.getElementById("cajaPublicion_" + ID + "").innerHTML = "";
+                                                                        $("#cajaPublicion_" + ID + "").append("<img onclick=publicacion('" + userdata.ID + "','" + type + "') class='mt-1 img_conf' src='" + arregloDeSubCadenasUrl[0] + "'/><div style='position: absolute;text-align: right;'><img src='img/multi.png' style='width:40px'></div>");
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                });
+                                            });
+                                    $("#correoE").attr("value", correo);
+                                    $("#correoR").attr("value", C);
+                                    var ref = firebase.database().ref("baseBandeja/");
+                                    ref.on("child_added", function (snapshot) {
+                                        userdata = snapshot.val();
+                                        var emisor = correo;
+                                        var receptor = C;
+                                        if (userdata.correo1 === emisor && userdata.correo2 === receptor) {
+                                            $("#idChat").attr("value", userdata.IDChat);
+                                        } else
+                                        if (userdata.correo1 === receptor && userdata.correo2 === emisor) {
+                                            $("#idChat").attr("value", userdata.IDChat);
+                                        }
+                                    });
+                                    auth.onAuthStateChanged(function (user) {
+                                        if (user) {
+                                            var mail = user.email;
+                                            var encripta = cifrar(mail.toString());
+                                            var correo = encripta.palabraEncriptada;
+                                            if (C === correo) {
+                                                location.replace("profile.html");
+                                            } else {
+
+                                                fire.collection("IMAGENES").where("mail", "==", C)
+                                                        .get()
+                                                        .then(function (querySnapshot) {
+                                                            querySnapshot.forEach(function (doc) {
+                                                                var publicaciones = doc.data();
+                                                                uid = publicaciones.uid;
+                                                                $("#enjoyers").append("<p>" + publicaciones.contSeg + "</p>");
+                                                                $("#imginfo").attr("src", publicaciones.foto);
+                                                                post = publicaciones.post;
+                                                                sigo = publicaciones.sigo;
+                                                                presentacion = publicaciones.presentacion;
+                                                                document.getElementById("presentacion").innerHTML = presentacion;
+                                                                if (sigo === undefined) {
+                                                                    $("#sigo").append("<p>0</p>");
+                                                                } else {
+                                                                    $("#sigo").append("<p>" + sigo + "</p>");
+                                                                }
+                                                                if (post === undefined) {
+                                                                    $("#postC").append("<p>0</p>");
+                                                                } else {
+                                                                    $("#postC").append("<p>" + post + "</p>");
+                                                                }
+                                                                if (publicaciones.cuentaVerificada) {
+                                                                    $("#nombre_usuario").append("<h2>" + publicaciones.nombre + "<img src='img/checkedBlue.png' style='width: 25px;height: 25px;margin-left: 8px'></h2>");
+                                                                } else {
+                                                                    $("#nombre_usuario").append("<h2>" + publicaciones.nombre + "</h2>");
+                                                                }
+                                                                deleteAccountC = publicaciones.deleteAccount;
+                                                                mailE = publicaciones.mail;
+                                                                if (mailE.toString() === "0011100111011001110010011111100101101101000111010100100100111001011110011111100101111001001110011101100100011101111110011001100110011001011010011010100101101001001010010101100100001000101110010111100100101001011010010101100111010001101010011111100101111001") {
+                                                                    $("#buttons").append("<button class='btn text-light btO' onclick=mensaje() style='width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px'><i class='fas fa-comments' style='margin-right: 10px'></i>Message</button>");
+                                                                } else {
+                                                                    if (deleteAccountC) {
+                                                                        $("#buttons").append("<button class='btn text-light btO' onclick=mensaje() style='width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px'><i class='fas fa-comments' style='margin-right: 10px'></i>Message</button>\n\
+                       <h2 style='color:white;font-family:Comic Sans MS,cusive;text-align: center;'>Este usuario ha solicitado la eliminacion de su cuenta</h2>");
+                                                                    } else {
+                                                                        $("#buttons").append("<button class='btn text-light btO' onclick=mensaje() style='width: auto;border-color: #bcc4c3;margin-bottom: 10px;margin-right: 10px'><i class='fas fa-comments' style='margin-right: 10px'></i>Message</button>\n\
+                            <button class='btn text-light' style='width: auto;border-color: #bcc4c3;margin-bottom: 10px' id='follow' onclick=follow('" + correo + "','" + C + "')><i id='simboloFollow' class='fas fa-user-plus' style='margin-right: 10px'></i>Follow By " + publicaciones.susM + " USD</button>\n\
+<div style='padding-left:12px;padding-top: 0px;width:40px' class='dropdown text-light'>\n\
+<button class='text-light btn out' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' style='background-color: #212529;border-radius:200px;outline: none;'>\n\
+<i class='fas fa-ellipsis-v text-light'></i>\n\
+</button>\n\
+<div class='dropdown-menu dropdown dropdown-menu-right' aria-labelledby='dropdownMenuButton' style='background-color: #212529'>\n\
+<button class='dropdown-item text-light' onclick=reporteC('" + uid + "','account')  ><i class='fas fa-flag text-light' style='margin-right:3px;border-radius:200px'></i>Reportar esta cuenta</a>\n\
+                 </div>\n\
+</div>");
+
+                                                                    }
+                                                                }
+                                                                $("#urlR").attr("value", publicaciones.foto);
+                                                                $("#portada").css('background-image', "url(" + publicaciones.urlP + ")");
+                                                                $("#nombreReceptor").attr("value", publicaciones.nombre);
+                                                                $("#susM").attr("value", publicaciones.susM);
+                                                                var contSeg = publicaciones.contSeg;
+                                                                var seguidores = publicaciones.seguidores;
+                                                                var separador = "*";
+                                                                limite = contSeg;
+                                                                arregloDeSubCadenas = seguidores.split(separador, limite);
+                                                                for (var w = 0; w < contSeg; w++) {
+                                                                    if (correo === arregloDeSubCadenas[w]) {
+                                                                        var textButton = document.getElementById("follow");
+                                                                        textButton.innerText = "";
+                                                                        document.getElementById("susActiva").innerHTML = 'Tu suscripción estará activa los próximos 30 días a partir del día de tu pago';
+                                                                        var followButton = $("#follow");
+                                                                        followButton.attr("id", "btnB");
+                                                                        followButton.attr("onclick", "");
+                                                                        document.getElementById("btnB").style.display = 'none';
+                                                                    }
+                                                                }
+                                                            });
+                                                        });
+                                            }
+
+                                        }
+                                    });
+
+
+
+                                });
+                    });
+                } else {
+                }
+            });
+
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .get()
+                            .then(function (querySnapshot) {
+                                querySnapshot.forEach(function (doc) {
+                                    var publicaciones = doc.data();
+                                    foto = publicaciones.foto;
+                                    if (foto === "undefined" || foto === "" || foto === undefined) {
+
+                                    } else {
+                                        $("#imgprofile").attr("src", foto);
+                                        $("#imgprofile1").attr("src", foto);
+                                    }
+                                    $("#urlE").attr("value", foto);
+                                    nombreE = publicaciones.nombre;
+                                });
+                            })
+                            .catch(function (error) {
+                            });
+                } else {
+                }
+            });
+            function mensaje() {
+                var idC = document.getElementById("idChat").value;
+                if (idC.length === 0) {
+                    var e = document.getElementById("correoE").value;
+                    var r = document.getElementById("correoR").value;
+                    var urlE = document.getElementById("urlE").value;
+                    var urlR = document.getElementById("urlR").value;
+                    var nombreR = document.getElementById("nombreReceptor").value;
+                    var palabra = [];
+                    var valores = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
+                        "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d",
+                        "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                        "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                        "-", "_"];
+                    var numero = 8;
+                    var numeroAleatorio;
+                    for (var i = 0; i < numero; i++) {
+                        numeroAleatorio = parseInt(Math.random() * valores.length);
+                        var resultado = valores[numeroAleatorio];
+                        palabra.push(resultado);
+                        var palabraResultante = palabra.join('').toString();
+                    }
+                    var newChat = {
+                        nombre1: nombreE,
+                        nombre2: nombreR,
+                        IDChat: palabraResultante,
+                        correo1: e,
+                        correo2: r,
+                        urlCorreo1: urlE,
+                        urlCorreo2: urlR
+                    };
+                    firebase.database().ref("baseBandeja/").push(newChat);
+                    var url = "chatE.html";
+                    url += "?";
+                    nomVec = palabraResultante.split(",");
+                    for (i = 0; i < nomVec.length; i++) {
+                        url += escape(nomVec[i]) + "=" + escape(nomVec[i]) + "&";
+                    }
+                    url = url.substring(0, url.length - 1);
+                    location.href = url;
+                } else {
+                    var url = "chatE.html";
+                    url += "?";
+                    nomVec = idC.split(",");
+                    for (i = 0; i < nomVec.length; i++) {
+                        url += escape(nomVec[i]) + "=" + escape(nomVec[i]) + "&";
+                    }
+                    url = url.substring(0, url.length - 1);
+                    location.href = url;
+                }
+            }
+
+
+        </script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script>
+
+            function follow(CS, CI) {
+                fire.collection("IMAGENES").where("mail", "==", CI)
+                        .get()
+                        .then(function (querySnapshot) {
+                            querySnapshot.forEach(function (doc) {
+                                var publicaciones = doc.data();
+                                var procesoEliminacion = publicaciones.deleteAccount;
+                                if (procesoEliminacion) {
+                                    $("#buttons").append("<h2 style='color:white;font-family:Comic Sans MS,cusive;text-align: center;'>Este usuario ha solicitado la eliminacion de su cuenta</h2>");
+                                } else {
+                                    var susM = parseFloat($("#susM").val());
+                                    if (susM > 0) {
+                                        auth.onAuthStateChanged(function (user) {
+                                            if (user) {
+                                                var mail = user.email;
+                                                var encripta = cifrar(mail.toString());
+                                                var correo = encripta.palabraEncriptada;
+                                                coins = parseInt($("#buyCoins").val());
+
+                                                fire.collection("IMAGENES").where("mail", "==", CS)
+                                                        .get()
+                                                        .then(function (querySnapshot) {
+                                                            querySnapshot.forEach(function (doc) {
+                                                                var publicaciones = doc.data();
+                                                                var coinsData = publicaciones.coins;
+                                                                var sigo = publicaciones.sigo;
+                                                                var seguidos = publicaciones.seguidos;
+                                                                var uidCS = publicaciones.uid;
+                                                                nombre = publicaciones.nombre;
+                                                                url = publicaciones.foto;
+                                                                if (coinsData) {
+                                                                    if (susM === coinsData || susM < coinsData) {
+                                                                        var loaderMensaje = document.getElementById("loaderMensaje");
+                                                                        var element = document.getElementById("loader");
+                                                                        element.style.display = 'flex';
+                                                                        element.classList.toggle("loader");
+                                                                        loaderMensaje.innerHTML = 'Procesando solicitud, por favor espere...';
+                                                                        docu = publicaciones.uid;
+                                                                        var docRef = fire.collection('IMAGENES').doc(docu);
+                                                                        var newCoins = parseFloat(coinsData) - parseFloat(susM);
+                                                                        var newData = {
+                                                                            coins: newCoins
+                                                                        };
+                                                                        docRef.update(newData).then(function () {
+                                                                            fire.collection("IMAGENES").where("mail", "==", CI)
+                                                                                    .get()
+                                                                                    .then(function (querySnapshot) {
+                                                                                        querySnapshot.forEach(function (doc) {
+                                                                                            var publicaciones = doc.data();
+                                                                                            doc = publicaciones.uid;
+                                                                                            var docRef = fire.collection('IMAGENES').doc(doc);
+                                                                                            var contSeg = publicaciones.contSeg;
+                                                                                            numNot = publicaciones.contNot;
+                                                                                            numrest = numNot - 1;
+                                                                                            ganancias = publicaciones.ganancias;
+                                                                                            if (contSeg === 0) {
+                                                                                                contSeg = 1;
+                                                                                                if (ganancias === 0 || ganancias === undefined) {
+                                                                                                    var newData = {
+                                                                                                        seguidores: CS,
+                                                                                                        contSeg: contSeg,
+                                                                                                        contNot: numrest,
+                                                                                                        new : 1,
+                                                                                                        ganancias: susM - (susM * .19)
+                                                                                                    };
+                                                                                                } else if (ganancias > 0) {
+                                                                                                    gananciaNeta = susM - (susM * .19) + ganancias;
+                                                                                                    var newData = {
+                                                                                                        seguidores: CS,
+                                                                                                        contSeg: contSeg,
+                                                                                                        contNot: numrest,
+                                                                                                        new : 1,
+                                                                                                        ganancias: gananciaNeta
+                                                                                                    };
+                                                                                                }
+
+                                                                                                docRef.update(newData).then(function () {
+                                                                                                    var nuevoSuscriptor = {
+                                                                                                        correoFoto: CI,
+                                                                                                        correo: CS,
+                                                                                                        newSus: nombre,
+                                                                                                        url: url,
+                                                                                                        contNotificacion: numrest
+                                                                                                    };
+                                                                                                    firebase.database().ref("likes/").push(nuevoSuscriptor).then(function () {
+                                                                                                        var aestTime = new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"});
+                                                                                                        aestTime = new Date(aestTime);
+                                                                                                        var newDateOptions = {
+                                                                                                            day: "2-digit",
+                                                                                                            month: "2-digit",
+                                                                                                            year: "numeric"
+                                                                                                        };
+                                                                                                        var fecha1 = aestTime.toLocaleString("en-US", newDateOptions);
+                                                                                                        arrFecha = fecha1.toString();
+                                                                                                        separador = "/";
+                                                                                                        var arrayDeCadenas = arrFecha.split(separador);
+                                                                                                        mes = arrayDeCadenas[0];
+                                                                                                        dia = arrayDeCadenas[1];
+                                                                                                        year = arrayDeCadenas[2];
+                                                                                                        fecha11 = "" + year + "-" + mes + "-" + dia + "";
+                                                                                                        if (fecha11) {
+                                                                                                            var f = moment(fecha11).add(30, 'days');
+                                                                                                            fT = f.format('YYYY-MM-DD');
+                                                                                                            var fechas = {
+                                                                                                                correoS: CS,
+                                                                                                                correoI: CI,
+                                                                                                                fechaInicio: fecha11,
+                                                                                                                fechaTerminacion: fT
+                                                                                                            };
+                                                                                                            firebase.firestore().collection('FECHAS').doc().set(fechas).then(function () {
+                                                                                                                if (sigo === undefined || sigo === 0) {
+                                                                                                                    var newSeguidos = {
+                                                                                                                        seguidos: CI,
+                                                                                                                        sigo: 1
+                                                                                                                    };
+                                                                                                                } else {
+                                                                                                                    if (sigo > 0) {
+                                                                                                                        newCi = seguidos.toString() + "*" + CI.toString();
+                                                                                                                        newSigo = sigo + 1;
+                                                                                                                        var newSeguidos = {
+                                                                                                                            seguidos: newCi,
+                                                                                                                            sigo: newSigo
+                                                                                                                        };
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                firebase.firestore().collection('IMAGENES').doc(uidCS).update(newSeguidos).then(function () {
+                                                                                                                    padre = document.getElementById("buttons");
+                                                                                                                    hijo = document.getElementById("follow");
+                                                                                                                    padre.removeChild(hijo);
+                                                                                                                    document.getElementById("susActiva").innerHTML = 'Tu suscripción estará activa los próximos 30 días a partir del día de tu pago';
+                                                                                                                    var ref = firebase.database().ref("Imagenes");
+                                                                                                                    ref.on("child_added", function (s) {
+                                                                                                                        userdata = s.val();
+                                                                                                                        if (userdata.correoI === CI) {
+                                                                                                                            var keys = s.key;
+                                                                                                                            var refTab = firebase.database().ref("Imagenes/").child(keys);
+                                                                                                                            refTab.update(newData);
+                                                                                                                        }
+                                                                                                                    });
+                                                                                                                    setTimeout(function () {
+                                                                                                                        location.reload();
+                                                                                                                    }, 3000);
+                                                                                                                });
+                                                                                                            });
+                                                                                                        } else {
+                                                                                                        }
+
+                                                                                                    });
+                                                                                                });
+                                                                                            } else if (contSeg > 0) {
+                                                                                                contSeg = contSeg + 1;
+                                                                                                var seguidores = publicaciones.seguidores;
+                                                                                                seguidores = seguidores + "*" + CS;
+                                                                                                if (ganancias === 0 || ganancias === undefined) {
+                                                                                                    var newData = {
+                                                                                                        seguidores: seguidores,
+                                                                                                        contSeg: contSeg,
+                                                                                                        contNot: numrest,
+                                                                                                        new : 1,
+                                                                                                        ganancias: susM - (susM * .19)
+                                                                                                    };
+                                                                                                } else if (ganancias > 0) {
+                                                                                                    gananciaNeta = susM - (susM * .19) + ganancias;
+                                                                                                    var newData = {
+                                                                                                        seguidores: seguidores,
+                                                                                                        contSeg: contSeg,
+                                                                                                        contNot: numrest,
+                                                                                                        new : 1,
+                                                                                                        ganancias: gananciaNeta
+                                                                                                    };
+                                                                                                }
+                                                                                                docRef.update(newData).then(function () {
+
+                                                                                                    var nuevoSuscriptor = {
+                                                                                                        correoFoto: CI,
+                                                                                                        correo: CS,
+                                                                                                        newSus: nombre,
+                                                                                                        url: url,
+                                                                                                        contNotificacion: numrest
+                                                                                                    };
+                                                                                                    firebase.database().ref("likes/").push(nuevoSuscriptor).then(function () {
+                                                                                                        var aestTime = new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"});
+                                                                                                        aestTime = new Date(aestTime);
+                                                                                                        var newDateOptions = {
+                                                                                                            day: "2-digit",
+                                                                                                            month: "2-digit",
+                                                                                                            year: "numeric"
+                                                                                                        };
+                                                                                                        var fecha1 = aestTime.toLocaleString("en-US", newDateOptions);
+                                                                                                        arrFecha = fecha1.toString();
+                                                                                                        separador = "/";
+                                                                                                        var arrayDeCadenas = arrFecha.split(separador);
+                                                                                                        mes = arrayDeCadenas[0];
+                                                                                                        dia = arrayDeCadenas[1];
+                                                                                                        year = arrayDeCadenas[2];
+                                                                                                        fecha11 = "" + year + "-" + mes + "-" + dia + "";
+                                                                                                        if (fecha11) {
+                                                                                                            var f = moment(fecha11).add(30, 'days');
+                                                                                                            fT = f.format('YYYY-MM-DD');
+                                                                                                            var fechas = {
+                                                                                                                correoS: CS,
+                                                                                                                correoI: CI,
+                                                                                                                fechaInicio: fecha11,
+                                                                                                                fechaTerminacion: fT
+                                                                                                            };
+                                                                                                            firebase.firestore().collection('FECHAS').doc().set(fechas).then(function () {
+
+                                                                                                                if (sigo === undefined || sigo === 0) {
+                                                                                                                    var newSeguidos = {
+                                                                                                                        seguidos: CI,
+                                                                                                                        sigo: 1
+                                                                                                                    };
+                                                                                                                } else {
+                                                                                                                    if (sigo > 0) {
+                                                                                                                        newCi = seguidos.toString() + "*" + CI.toString();
+                                                                                                                        newSigo = sigo + 1;
+                                                                                                                        var newSeguidos = {
+                                                                                                                            seguidos: newCi,
+                                                                                                                            sigo: newSigo
+                                                                                                                        };
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                firebase.firestore().collection('IMAGENES').doc(uidCS).update(newSeguidos).then(function () {
+                                                                                                                    padre = document.getElementById("buttons");
+                                                                                                                    hijo = document.getElementById("follow");
+                                                                                                                    padre.removeChild(hijo);
+                                                                                                                    document.getElementById("susActiva").innerHTML = 'Tu suscripción estará activa los próximos 30 días a partir del día de tu pago';
+
+                                                                                                                    var ref = firebase.database().ref("Imagenes");
+                                                                                                                    ref.on("child_added", function (s) {
+                                                                                                                        userdata = s.val();
+                                                                                                                        if (userdata.correoI === CI) {
+                                                                                                                            var keys = s.key;
+                                                                                                                            var refTab = firebase.database().ref("Imagenes/").child(keys);
+                                                                                                                            refTab.update(newData);
+                                                                                                                        }
+                                                                                                                    });
+                                                                                                                    setTimeout(function () {
+                                                                                                                        location.reload();
+                                                                                                                    }, 3000);
+                                                                                                                });
+
+                                                                                                            });
+                                                                                                        } else {
+                                                                                                        }
+
+                                                                                                    });
+                                                                                                });
+                                                                                            }
+                                                                                        });
+                                                                                    });
+                                                                        });
+                                                                    } else if (susM > coinsData) {
+                                                                        var compAmmount = susM - coinsData;
+                                                                        document.getElementById("pago").style.display = "";
+                                                                        document.getElementById("completar").innerHTML = 'Completar faltante con tarjeta';
+                                                                        $("#completar").attr("onclick", "pagar('" + CS + "','" + CI + "','" + compAmmount + "')");
+                                                                    }
+
+                                                                } else if (coinsData === undefined || coinsData === 0) {
+                                                                    document.getElementById("completar").innerHTML = 'Pagar con tarjeta';
+                                                                    document.getElementById("pago").style.display = "";
+                                                                    $("#completar").attr("onclick", "pagar('" + CS + "','" + CI + "')");
+                                                                }
+                                                            });
+                                                        });
+                                            }
+                                        });
+                                    } else {
+                                    }
+                                }
+                            });
+                        });
+            }
+            function pagar(CS, CI, compAmmount) {
+                const createStripeCheckout = firebase.functions().httpsCallable('stripeCheckout');
+                const stripe = Stripe('pk_live_51HakUZLWZTh2cmEhTxiyCroyuU2xMcFqaSnTgA1QUtXaaekTkdaH8AtWxaktIKlPv6wDDfum8OO2xKJNNDAPQHtk00py6U2ePQ');
+                var nombre = CI;
+                var correo = CS;
+                var type = "pta1Xn";
+                compAmmount = parseFloat(compAmmount);
+                if (compAmmount !== undefined && compAmmount > 0 && compAmmount !== NaN) {
+                    var ammountD = compAmmount;
+                } else {
+                    var ammountD = 0;
+                }
+                var loaderMensaje = document.getElementById("loaderMensaje");
+                var element = document.getElementById("loader");
+                element.style.display = 'flex';
+                element.classList.toggle("loader");
+                loaderMensaje.innerHTML = 'Procesando solicitud, por favor espere...';
+                createStripeCheckout({name: nombre, correo: correo, type: type, ammountD: ammountD}).then(response => {
+                    const sessionId = response.data.id;
+                    stripe.redirectToCheckout({
+                        sessionId: sessionId,
+                    }).then(function (result) {
+                    });
+                });
+            }
+        </script>
+        <script>
+            function deleteN(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+                    docref.update({
+                        new : firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "notificaciones.html";
+                        location.href = url;
+                    });
+                } else {
+                    var url = "notificaciones.html";
+                    location.href = url;
+                }
+            }
+            function deleteM(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+                    docref.update({
+                        newM: firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "bandejaEntrada.html";
+                        location.href = url;
+                    });
+
+
+                } else {
+                    var url = "bandejaEntrada.html";
+                    location.href = url;
+                }
+            }
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .onSnapshot(function (querySnapshot) {
+                                var cities = [];
+                                querySnapshot.forEach(function (doc) {
+                                    publicaciones = doc.data();
+                                    if (correo === publicaciones.mail) {
+                                        newN = publicaciones.new;
+                                        newC = publicaciones.newC;
+                                        newD = publicaciones.newD;
+                                        var uid = publicaciones.uid;
+                                        cities.push(newN + " : " + newC + " : " + uid);
+                                        if (publicaciones.new) {
+                                            $("#button_Not").attr("onclick", "deleteN('" + uid + "')");
+                                            $("#button_NotT").attr("onclick", "deleteN('" + uid + "')");
+                                            divNot = document.getElementById("not");
+                                            divNotTog = document.getElementById("notT");
+                                            withN = 35;
+                                            heightW = 35;
+                                            withNT = 30;
+                                            heightWT = 30;
+                                            divNot.innerHTML = '';
+                                            divNotTog.innerHTML = '';
+                                            $("#notT").append("<img style='width: " + withNT + "px;height: " + heightWT + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                            $("#not").append("<img style='width: " + withN + "px;height: " + heightW + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                        }
+                                        if (publicaciones.newM) {
+                                            $("#notificacion").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#notificacion1").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#downR").attr("src", "img/downR.png");
+                                            $("#button_Men").attr("onclick", "deleteM('" + uid + "')");
+                                            $("#drop_men").attr("onclick", "deleteM('" + uid + "')");
+                                        }
+                                    } else {
+                                    }
+                                });
+                            });
+                }
+            }
+            );
+            function publicacion(id, t) {
+                var1 = id.concat("," + t);
+                var url = "comentarios.html";
+                url += "?";
+                nomVec = var1.split(",");
+                for (i = 0; i < nomVec.length; i++) {
+                    url += escape(nomVec[i]) + "=" + escape(nomVec[i]) + "&";
+                }
+                url = url.substring(0, url.length - 1);
+                location.href = url;
+            }
+            function reporteC(uid, ty) {
+                ID = uid.concat("," + ty);
+                var encrypted = CryptoJS.TripleDES.encrypt(ID, "4379a7f1f63d50f763ad1fe333203fcb9d5e3631");
+                var stringUrl = encrypted.toString();
+                var url = "reporte.html";
+                url += "?";
+                nomVec = stringUrl.split(",");
+                url += nomVec;
+                location.href = url;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="script/css/body.css">
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="script/css/carrusel.css">
+        <link rel="stylesheet" href="css/switch.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"  crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        <link rel="stylesheet" href="script/css/body.css">
+        <link rel="stylesheet" href="script/css/carrusel.css">
+        <link rel="stylesheet" href="script/css/newFile.css">
+        <link rel="stylesheet" href="script/css/scrooll1.css">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }
+            button{
+                outline: none            }
+            .zoom:hover{
+                transform: scale(1.2);
+            }
+            .zoom1:hover{
+                transform: scale(1.1);
+            }
+            .dropdown > .dropdown-item:hover{
+                background-color: #04242c;
+                color:white;
+            }
+            .texta:focus{
+                outline: none;
+                box-shadow: none;
+            }
+            .loader {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('img/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+                background-color: #020000;
+                align-items: center;
+                display: flex;
+                opacity: .9;
+                justify-content: center;
+            }
+            .p{
+                visibility: hidden;    
+            } 
+            .progress-bar{
+                width: 0%
+            }
+            .subir{
+                visibility: hidden;    
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                font-family: Montserrat, sans-serif;}
+            @media (min-width: 992px) {
+                .ocultar-div{
+                    display:none;
+                }
+            }
+            @media (max-width: 991px) {
+                .ocultar-nav{
+                    display:none;
+                }
+            }
+            .btn:focus{
+                outline: none;
+                box-shadow: none;
+                color: #3c3f41;
+                font-family: "Comic Sans MS", cursive;
+            }
+        </style>
+
+
+    </head>
+    <body style="background-color: #131313;
+
+          background-size: cover;overflow-x: hidden;
+          background-attachment: fixed"
+          class="scrol scrol-thumb">
+        <div class="" id="loader" style="background-color: #181b22;text-align: center;display: none">
+            <h2 id='loaderMensaje' style="font-size: 40px;text-align: center;color: #2aa58a" class="justify-content-center">
+                Cargando archivos, el tiempo de carga dependera de su conexion...
+            </h2>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <div style="position: fixed;top: 0px;width: 100%;display: block;padding: 0px" class="sticky-top">
+            <nav class="navbar bg-dark navbar-expand-lg navbar-toggleable-xl" style="background-color: #343a40;padding: 0px;justify-content: space-around;margin: 0px">
+                <div class="navbar-toggler" style="padding: 0px;justify-content: space-around;width: 100%" >
+                    <ul class="nav justify-content-around" style="padding: 0px;">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 5px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " href="subir.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" id="button_NotT" onclick="deleteN()" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <div id="notT" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img id="imgprofile1" style="width: 30px;height: 30px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img id="downR" src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" href="tienda.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/tienda.png">Store
+                                    </a>
+                                    <a id="drop_men" class="dropdown-item text-light mb-1" onclick="deleteM()" href="#">
+                                        <img id="notificacion1" style="width: 20px;height: 20px;margin-right: 5px" src="img/mensajeW.png">Chat
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrarS">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar justify-content-center ocultar-nav bg-dark" style="padding: 0px;margin-bottom: 0px">
+                    <ul class="nav justify-content-center" style="padding: 0px">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 25px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="tienda.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/tienda.png" style="height: 33px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " href="subir.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item " id="button_Men" onclick="deleteM()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="notificacion" src="img/mensajeW.png" style="width: 35px;height: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item nav-link" id="button_Not" onclick="deleteN()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <div id="not" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="imgprofile" style="width: 35px;height: 35px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrar">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div style="height: 55px">s </div>
+        <div class="container-fluid" id="messageN" >
+            <div class="container" style="background-image: url('img/poridentidad.png');background-repeat: no-repeat;background-size: cover;background-attachment: fixed;
+                 border-radius: 20px;margin-top: 20px;padding: 0px">
+                <div class="container-fluid" style="border-radius: 20px;background: rgba(0,0,0,.4);">
+                    <div id='seccion' class="container justify-content-center mb-5" style="text-align: center">
+                        <h2 style="text-align: center;font-family: 'Comic Sans MS', cursive;color:white">En esta seccion podras subir tus nuevas publicaciones</h2>
+                    </div>
+                    <div class="container" id="pregunta">
+
+                        <div class="row" style="margin-bottom: 30px">
+
+
+                            <div class="col-xs-6 justify-content-center zoom1" id="vid" onclick="preguntaImagen()" style="text-align: center">
+                                <img src="img/fondo.png" style="width: 90%">
+                                <h1 class="mt-2"  style="display: block;margin: 0px;padding: 0px;text-align: center;color: white;font-family: 'Comic Sans MS', cursive;font-size: 100%">IMAGENES o GIFS</h1>
+
+                            </div>
+                            <div  class="col-xs-6 justify-content-center zoom1" id="IMG" onclick="preguntaVideo()" style="text-align: center">
+                                <img src="img/video.png" style="width: 90%">
+                                <h1 class="mt-2" style="display: block;margin: 0px;padding: 0px;text-align: center;color: white;font-family: 'Comic Sans MS', cursive;font-size: 100%">VIDEOS</h1>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div  id="divImagenes" class="justify-content-center mt-2" style="text-align: center;display: none">
+
+
+
+
+                        <div class="row justify-content-center" style="text-align: center">
+                            <div class="col-xs-4">
+                                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval='false' style="width: 100%;">
+                                    <div class="carousel-inner" id="carrusel" >
+                                        <div class='item active'> 
+                                            <button class="btn zoom" onclick="eliminar()" style="padding: 0px;top:0px;margin-bottom: 10px;outline: none"><img src="img/left-arrow.png" style="width: 50px"></button>
+
+                                            <img id='previewDIVIMG' src='img/video.png' class="img-responsive" style="width: 100%"> 
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" style="height: 80%;position: absolute;top: 40%;">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true" id="iz" style="visibility: visible"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" style="height: 80%;position: absolute;top: 40%;">
+
+                                        <span class="carousel-control-next-icon" aria-hidden="true" id="de" style="visibility: visible"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="container">
+                            <p id="mensajeEspere" style="line-height : 28px;background-color: rgba(0,0,0,0.5);border-radius: 18px;display: flex;align-items: center;padding: 8px;font-size: 25px;font-family: 'Comic Sans MS', cursive;color: white;text-align: center;display: none">*Los videos pueden tardar mas en ser procesados por favor espere, en ningun momento dejaremos de procesar su video...</p>
+                            <p id="mensajeEspere1" style="line-height : 28px;background-color: rgba(0,0,0,0.5);border-radius: 18px;display: flex;align-items: center;padding: 8px;font-size: 25px;font-family: 'Comic Sans MS', cursive;color: white;text-align: center;display: none">The videos may take longer to be processed please wait, at no time will we stop processing your video ...</p>
+                        </div>
+                        <br>
+                        <div id="preview" style="width: 100%;height: 50%;">
+
+                        </div>    
+                        <div class="justify-content-center" style="text-align: center">
+                            <label id="newImg" class="btn text-light text-center zoom" style="border-radius: 15px;font-family: 'Comic Sans MS', cursive;font-weight: bold;font-size: 20px;align-self: center;width: auto;cursor: pointer;visibility: hidden">
+                                <img src="img/cam.png" style="width: 50px"><br>
+                                New file
+                                <input type="file" id="file" class="btn btn-block" style="display: none;" multiple="" accept="image/*">
+                            </label>
+                            <button class="btn zoom"  id="vacirInput" onclick="eliminar()" style="display: none;outline: none"><img src="img/cancel.png" style="width: 50px"></button>
+
+                            <button class="btn zoom" id="buttonS" onclick="subir()" style="display: none;outline: none"><img src="img/right-arrow.png" style="width: 50px"></button>
+                        </div>
+                        <div id="caja"></div>
+                        <input type="text" value="" id="preguntaInput" style="display: none" readonly="readonly" onkeypress="eliminar()">
+                        <input type="text" value="" id="text" style="display: none" readonly="readonly" onkeypress="eliminar()">
+                        <input type="text" value="" id="tamano" style="display: none" readonly="readonly" onkeypress="eliminar()">
+                        <h3 id="cantCaracteres" style="font-family: 'Comic Sans MS', cursive;color: white;display: none">0/200</h3>
+                        <h3 id="errorCaracteres" style="font-family: 'Comic Sans MS', cursive;color: red"></h3>
+                        <h2 class="justify-content-center" id="errorCaracter" style="background: rgba(255,55,55,0.2);border-radius: 15px;text-align: center;margin-top: 0px;color: red;font-family: 'Comic Sans MS',cursive"></h2>
+                        <textarea onkeyup="validarCaracteres(this.value)" id="descripcion" class="container bg-dark texta" placeholder="Escribe un pie de foto o video..." style="display: none;border-radius: 10px;color: white;font-family: 'Comic Sans MS', cursive"></textarea><br>
+                        <button class="btn zoom" id="cancelarSubida" onclick="" style="display: none;width: 50px;height: 50px;outline: none;margin-right: 8px"><img src="img/cancel.png" style="width: 50px"></button>
+                        <button class="btn zoom" id="unirUrl" onclick="" style="display: none;width: 50px;height: 50px;outline: none"><img src="img/checked.png" style="width: 50px"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center" style="text-align: center">
+                <label class="switch">
+                    <input id="mode" onclick="mode_cambio()" type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+                <h2 id="modeText" style="margin-top: 0px;padding-top: 0px;margin-left: 5px;color: white;font-family: 'Comic Sans MS', cursive">Privada</h2>
+            </div>
+            <h4 id="notaMode" style="margin-top: 0px;padding-top: 0px;margin-left: 5px;color: white;font-family: 'Comic Sans MS', cursive;text-align: center"></h4>
+
+
+        </div>
+        <img src="">
+        <script>
+            var vid = $("#vid").width();
+            $("#vid").height(vid);
+            var img = $("#IMG").width();
+            $("#IMG").height(img);
+        </script>
+        <script src="script/cif.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-compat.js"></script>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyB9zjuIk3aupb9lxw4kdE10WELo3RflJP0",
+                authDomain: "enjoy-13d08.firebaseapp.com",
+                databaseURL: "https://enjoy-13d08-default-rtdb.firebaseio.com",
+                projectId: "enjoy-13d08",
+                storageBucket: "enjoy-13d08.appspot.com",
+                messagingSenderId: "259344011433",
+                appId: "1:259344011433:web:2766c0f29a97a74da5d9b8"
+            };
+            firebaseApp = firebase.initializeApp(firebaseConfig);
+            var auth = firebase.auth();
+            var fire = firebase.firestore();
+        </script>
+        <script src="subirF.js"></script>
+        <script>
+            function validarCaracteres(string) {
+                var filtro = "<>";
+                document.getElementById("errorCaracter").innerHTML = '';
+                for (var i = 0; i < string.length; i++) {
+                    if (filtro.indexOf(string.charAt(i)) > -1) {
+                        document.getElementById("errorCaracter").innerHTML = '< ó > no son caracteres validos';
+                    }
+                }
+                var descripcion = $("#descripcion").val();
+                tamano = descripcion.length;
+                document.getElementById("cantCaracteres").innerHTML = "";
+                document.getElementById("cantCaracteres").innerHTML = "" + tamano + "/200";
+                document.getElementById("errorCaracteres").innerHTML = "";
+                if (tamano > 200) {
+                    document.getElementById("errorCaracteres").innerHTML = "*200 max";
+                }
+
+            }
+            function mode_cambio() {
+                notaMode = document.getElementById("notaMode");
+                mode = document.getElementById("mode");
+                modeText = document.getElementById("modeText");
+                if (mode.checked) {
+                    notaMode.innerHTML = "";
+                    modeText.innerHTML = "";
+                    modeText.innerHTML = "Privada";
+                } else {
+                    modeText.innerHTML = "";
+                    modeText.innerHTML = "Publica";
+                    notaMode.innerHTML = "Cualquiera podra ver esta publucacion aun si no es un seguidor";
+                }
+            }
+            $("#cerrar").click(function () {
+                auth.signOut().then(function () {
+                    window.location = "index.html";
+                });
+            });
+            $("#cerrarS").click(function () {
+                auth.signOut().then(function () {
+                    window.location = "index.html";
+                });
+            });
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .get()
+                            .then(function (querySnapshot) {
+                                querySnapshot.forEach(function (doc) {
+                                    var publicaciones = doc.data();
+                                    foto = publicaciones.foto;
+                                    if (foto === "undefined" || foto === "" || foto === undefined) {
+
+                                    } else {
+                                        $("#imgprofile").attr("src", foto);
+                                        $("#imgprofile1").attr("src", foto);
+                                    }
+                                });
+                            })
+                            .catch(function (error) {
+                            });
+                } else {
+                    location.replace("index.html");
+                }
+            });
+        </script>
+        <script>
+            function deleteN(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+
+                    docref.update({
+                        new : firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "notificaciones.html";
+                        location.href = url;
+                    });
+
+
+                } else {
+                    var url = "notificaciones.html";
+                    location.href = url;
+                }
+            }
+            function deleteM(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+
+                    docref.update({
+                        newM: firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "bandejaEntrada.html";
+                        location.href = url;
+                    });
+
+
+                } else {
+                    var url = "bandejaEntrada.html";
+                    location.href = url;
+                }
+            }
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .onSnapshot(function (querySnapshot) {
+                                var cities = [];
+                                querySnapshot.forEach(function (doc) {
+                                    publicaciones = doc.data();
+                                    if (correo === publicaciones.mail) {
+                                        newN = publicaciones.new;
+                                        newC = publicaciones.newC;
+                                        newD = publicaciones.newD;
+                                        var uid = publicaciones.uid;
+                                        cities.push(newN + " : " + newC + " : " + uid);
+                                        if (publicaciones.new) {
+                                            $("#button_Not").attr("onclick", "deleteN('" + uid + "')");
+                                            $("#button_NotT").attr("onclick", "deleteN('" + uid + "')");
+                                            divNot = document.getElementById("not");
+                                            divNotTog = document.getElementById("notT");
+                                            withN = 35;
+                                            heightW = 35;
+                                            withNT = 30;
+                                            heightWT = 30;
+                                            divNot.innerHTML = '';
+                                            divNotTog.innerHTML = '';
+                                            $("#notT").append("<img style='width: " + withNT + "px;height: " + heightWT + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                            $("#not").append("<img style='width: " + withN + "px;height: " + heightW + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                        }
+                                        if (publicaciones.newM) {
+                                            $("#notificacion").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#notificacion1").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#downR").attr("src", "img/downR.png");
+                                            $("#button_Men").attr("onclick", "deleteM('" + uid + "')");
+                                            $("#drop_men").attr("onclick", "deleteM('" + uid + "')");
+                                        }
+                                    } else {
+                                    }
+                                });
+                            });
+                }
+            });
+            function preguntaImagen() {
+                document.getElementById("seccion").style.display = "none";
+                $("#preguntaInput").attr("value", "imagen");
+                $("#file").attr("accept", "image/*");
+                document.getElementById("pregunta").style.display = "none";
+                document.getElementById("divImagenes").style.display = "";
+                document.getElementById("newImg").style.visibility = "visible";
+                var divImg = $("#previewDIVIMG");
+                divImg.attr("src", "img/fondo.png");
+            }
+            function preguntaVideo() {
+                document.getElementById("mensajeEspere").style.display = "";
+                document.getElementById("mensajeEspere1").style.display = "";
+                document.getElementById("seccion").style.display = "none";
+                $("#preguntaInput").attr("value", "video");
+                $("#file").attr("accept", "video/*");
+                document.getElementById("pregunta").style.display = "none";
+                document.getElementById("divImagenes").style.display = "";
+                document.getElementById("newImg").style.visibility = "visible";
+                var divVid = $("#previewDIVIMG");
+                divVid.attr("src", "img/video.png");
+
+            }
+            function eliminar() {
+                $("#file").val(null);
+                location.reload();
+            }
+        </script>
+    </body>
+</html>

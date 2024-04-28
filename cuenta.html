@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        <style>
+            .lin{
+                list-style-type: disc;
+                text-align: start;
+            }
+            .link{
+                text-decoration: underline 3px #184c4c;
+                width: 50px;
+            }
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }
+            h2{
+                font-family: 'Comic Sans MS',cursive;
+            }
+            .formulario{
+                background: rgba(0,0,0,.3);
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 0 30px rgba(0,0,0,.568);
+                margin-top: 55px
+            }
+            .form-controla{
+                background: rgba(248,248,245,.4);
+                border-style: none;
+                transition: 0.5s ease-in;
+                outline: none;
+                box-shadow: none;
+                border-radius: 15px;
+                color: white;
+                font-family: 'Comic Sans MS', cursive;   
+                height: 40px;
+                font-size: 19px
+            }
+            .form-controla:focus{
+                background: rgba(248,248,245,.1);
+                outline: none;
+                box-shadow: none;
+                color: white;
+                font-family: 'Comic Sans MS', cursive;
+            }
+            .form-controla::placeholder{
+                color: white;
+                font-family: 'Comic Sans MS', cursive
+            }
+            .buttonSend{
+                background: rgba(0,0,0,.5);
+                outline-color: white;
+                border-color: white;
+                color: white;
+                font-family: 'Comic Sans MS', cursive;
+            }
+            .buttonSend:focus{
+                box-shadow: none;
+                color: white;
+                font-family: 'Comic Sans MS', cursive;
+
+            }
+            .buttonSend:hover{
+                transform: scale(1.2);
+                color: white;
+                font-family: 'Comic Sans MS', cursive;
+            }
+            body{
+                background-color: #131313;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            h2{
+                color: white;
+                font-family: 'Comic Sans MS', cursive
+            }
+            p{
+                color: white;
+                font-family: 'Comic Sans MS', cursive
+            }
+            .zoom:hover{
+                transform: scale(1.2);
+            }
+            .dropdown > .dropdown-item:hover{
+                /*Modifica lo que quieras*/
+                background-color: #04242c;
+                color:white;
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                font-family: Montserrat, sans-serif;}
+            @media (min-width: 992px) {
+                .ocultar-div{
+                    display:none;
+                }
+            }
+            @media (max-width: 991px) {
+                .ocultar-nav{
+                    display:none;
+                }
+            }
+        </style>
+    </head>
+    <body style="background-image: url('img/store.jpg');background-repeat: no-repeat;background-size: cover;overflow-x: hidden;background-attachment: fixed;"
+          class="scrol scrol-thumb">
+        <div style="position: fixed;top: 0px;width: 100%;display: block;padding: 0px" class="sticky-top">
+            <nav class="navbar bg-dark navbar-expand-lg navbar-toggleable-xl" style="background-color: #343a40;padding: 0px;justify-content: space-around;margin: 0px">
+                <div class="navbar-toggler" style="padding: 0px;justify-content: space-around;width: 100%" >
+                    <ul class="nav justify-content-around" style="padding: 0px;">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 5px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" id="button_NotT" onclick="deleteN()" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <div id="notT" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img id="imgprofile1" style="width: 30px;height: 30px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img id="downR" src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" href="tienda.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/tienda.png">Store
+                                    </a>
+                                    <a id="drop_men" class="dropdown-item text-light mb-1" onclick="deleteM()" href="#">
+                                        <img id="notificacion1" style="width: 20px;height: 20px;margin-right: 5px" src="img/mensajeW.png">Chat
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrarS">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+
+
+
+
+                    </ul>
+                </div>
+
+                <div class="navbar justify-content-center ocultar-nav bg-dark" style="padding: 0px;margin-bottom: 0px">
+                    <ul class="nav justify-content-center" style="padding: 0px">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 25px;background-color: #343a40">
+                                <img src="img/camRetro.png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/iconUsers.png" style="height: 30px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="tienda.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/tienda.png" style="height: 33px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img src="img/add .png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item " id="button_Men" onclick="deleteM()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="notificacion" src="img/mensajeW.png" style="width: 35px;height: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item nav-link" id="button_Not" onclick="deleteN()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <div id="not" class="p-0" style="padding:0px">
+                                    <img src="img/notification (1).png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img id="imgprofile" style="width: 35px;height: 35px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrar">
+                                        <img style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div style="width: 55px">s</div>
+        <div class="container justify-content-center">
+            <div class="row justify-content-center mt-3 mb-3 pt-3">
+
+                <div class="form-group text-center formulario" style="width: 85%;background: rgba(0,36,44,.8)">
+                    <img id="imginfo" src="img/user.png" style="align-self: center;height: 120px;width: 120px; object-fit:cover; border-radius: 200px; border-width: 5px;margin-top: 6px;margin-bottom: 6px;margin-left: 6px;margin-right: 6px" width="120">
+                    <h2 id="saldoActual" style="font-family: 'Comic Sans MS',cursive;color: white"></h2>
+                    <h2 id="saldoActual2" style="font-family: 'Comic Sans MS',cursive;color: white"></h2>
+                    <div class="form-group">
+                        <input id="retirar" onkeyup="onKeyUp(this.value)" type="number" class="form-controla btn-block" placeholder="Cantidad a retirar">
+                    </div>
+                    <div class="form-group">
+                        <input id="alias" onkeyup="onKeyUp(this.value)" class="form-controla btn-block" type="text" placeholder="Alias o nombre">                    </div>
+                    <div class="form-group">
+                        <input id="account" onkeyup="onKeyUp(this.value)" class="form-controla btn-block" type="text" placeholder="No. de tarjeta de credito o cuenta CLABE">
+                    </div>
+                    <div class="form-group">
+                        <button ID="retirarBtn" class="btn buttonSend" onclick="retirar()">Retirar</button>
+                    </div>
+                    <h2 id="errorMensage" style="color: #ff0000"></h2>
+                    <div class="container-fluid p-1">
+                        <ol>
+                            <li class="lin" style="color: white;font-family: 'Comic Sans MS', cursive;font-size: 22px">Para solicitar una retirada de Coins, debe disponer de un método de retirada que tengamos disponible. </li>
+                            <li class="lin" style="color: white;font-family: 'Comic Sans MS', cursive;font-size: 22px">Asegúrese de que la información que nos haya proporcionado sea correcta, esté completa y actualizada. Usted deberá asumir cualquier tasa o pérdida ocasionada por haber proporcionado información incorrecta al momento de solicitar su retiro. No nos hacemos responsables de las pérdidas, disputas u otras consecuencias que se deriven de información incorrecta que usted proporcione sobre el método de retirada.</li>
+                            <li class="lin" style="color: white;font-family: 'Comic Sans MS', cursive;font-size: 22px">Cada solicitud de retirada que realice también está sujeta a los terminos y condiciones que se muestran en la seccion de Política transacciones y retiros. El límite de retirada, así como cualquier otra información que aparezca en las páginas relacionadas, puede cambiar en cualquier momento a nuestra entera discreción y está sujeta a leyes o reglamentos de obligado cumplimiento en el país o región donde usted resida.</li>
+                            <li class="lin" style="color: white;font-family: 'Comic Sans MS', cursive;font-size: 22px">El hecho de proceder a una retirada indica que está de acuerdo con nuestra Política de transacciones y retiros, con estas instrucciones y con cualquier información adicional que Enjoy The Moment le proporcione en el momento de la retirada.</li>
+                            <li class="lin" style="color: white;font-family: 'Comic Sans MS', cursive;font-size: 22px">En nuestra Política de privacidad puede obtener más información sobre el tratamiento de sus datos.</li>
+                            <li class="lin" style="color: white;font-family: 'Comic Sans MS', cursive;font-size: 22px">Si tiene alguna pregunta, póngase en contacto con nosotros <p class="link zoom" onclick="redireccionar()">Contactanos</p></li>
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script/cif.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://momentjs.com/downloads/moment.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js" crossorigin="anonymous" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-compat.js"></script>
+        <script>
+                                var firebaseConfig = {
+                                    apiKey: "AIzaSyB9zjuIk3aupb9lxw4kdE10WELo3RflJP0",
+                                    authDomain: "enjoy-13d08.firebaseapp.com",
+                                    databaseURL: "https://enjoy-13d08-default-rtdb.firebaseio.com",
+                                    projectId: "enjoy-13d08",
+                                    storageBucket: "enjoy-13d08.appspot.com",
+                                    messagingSenderId: "259344011433",
+                                    appId: "1:259344011433:web:2766c0f29a97a74da5d9b8"
+                                };
+                                firebaseApp = firebase.initializeApp(firebaseConfig);
+                                var auth = firebase.auth();
+                                var fire = firebase.firestore();
+        </script>
+        <script>
+            var imgp = document.getElementById("imginfo");
+            var w = imgp.height;
+            imgp.width = w;
+            function deleteN(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+                    docref.update({
+                        new : firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "notificaciones.html";
+                        location.href = url;
+                    });
+                } else {
+                    var url = "notificaciones.html";
+                    location.href = url;
+                }
+            }
+            $("#cerrar").click(function () {
+                auth.signOut().then(function () {
+                    window.location = "index.html";
+                });
+            });
+            $("#cerrarS").click(function () {
+                auth.signOut().then(function () {
+                    window.location = "index.html";
+                });
+            });
+            function deleteM(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+                    docref.update({
+                        newM: firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "bandejaEntrada.html";
+                        location.href = url;
+                    });
+                } else {
+                    var url = "bandejaEntrada.html";
+                    location.href = url;
+                }
+            }
+        </script>
+        <script>
+            var fire = firebase.firestore();
+            var data = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .get()
+                            .then(function (querySnapshot) {
+                                querySnapshot.forEach(function (doc) {
+                                    var publicaciones = doc.data();
+                                    foto = publicaciones.foto;
+                                    if (foto === "undefined" || foto === "" || foto === undefined) {
+                                    } else {
+                                        $("#imgprofile").attr("src", foto);
+                                        $("#imgprofile1").attr("src", foto);
+                                        $("#imginfo").attr("src", foto);
+                                    }
+                                    ganancias = publicaciones.ganancias;
+                                    h2 = document.getElementById("saldoActual");
+                                    h22 = document.getElementById("saldoActual2");
+                                    if (ganancias === 0 || ganancias === undefined) {
+                                        h2.innerHTML = 'Saldo(USD)';
+                                        h22.innerHTML = '$0';
+                                    } else if (ganancias > 0) {
+                                        h2.innerHTML = 'Saldo(USD)';
+                                        h22.innerHTML = '$' + ganancias;
+                                    }
+                                });
+                            });
+                }
+            });
+            function retirar() {
+                var cantR = $("#retirar").val();
+                cantRV = parseFloat(cantR);
+                var alias = $("#alias").val();
+                var cuenta = $("#account").val();
+                var filtroLetra = /[A-Za-z0-9_-\s.]/
+                for (var i = 0; i < cantR.length; i++) {
+                    if (filtroLetra.test(cantR.charAt(i))) {
+                        if (i === cantR.length - 1) {
+                            i = cantR.length - 1;
+                            for (var j = 0; j < alias.length; j++) {
+                                if (filtroLetra.test(alias.charAt(j))) {
+                                    if (j === alias.length - 1) {
+                                        j = alias.length - 1;
+                                        for (var k = 0; k < cuenta.length; k++) {
+                                            if (filtroLetra.test(cuenta.charAt(k))) {
+                                                if (k === cuenta.length - 1) {
+                                                    k = cuenta.length - 1;
+                                                }
+                                            } else {
+                                                document.getElementById("errorMensage").innerHTML = 'caracter no valido';
+                                                k = cuenta.length - 1;
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    document.getElementById("errorMensage").innerHTML = 'caracter no valido';
+                                    j = alias.length - 1;
+                                }
+                            }
+                        }
+                    } else {
+                        document.getElementById("errorMensage").innerHTML = 'caracter no valido';
+                        i = cantR.length - 1;
+                    }
+                }
+                var validacion = /</;
+                var validacion2 = />/;
+                if (validacion.test(cantR)) {
+                    document.getElementById("errorMensage").innerHTML = '"<" no es un caracter valido';
+                } else {
+                    if (validacion2.test(cantR)) {
+                        document.getElementById("errorMensage").innerHTML = '">" no es un caracter valido';
+
+                    } else {
+                        if (validacion.test(alias)) {
+                            document.getElementById("errorMensage").innerHTML = '"<" no es un caracter valido';
+                        } else {
+                            if (validacion2.test(alias)) {
+                                document.getElementById("errorMensage").innerHTML = '">" no es un caracter valido';
+
+                            } else {
+                                if (validacion.test(cuenta)) {
+                                    document.getElementById("errorMensage").innerHTML = '"<" no es un caracter valido';
+                                } else {
+                                    if (validacion2.test(cuenta)) {
+                                        document.getElementById("errorMensage").innerHTML = '">" no es un caracter valido';
+
+                                    } else {
+                                        auth.onAuthStateChanged(function (user) {
+                                            if (user) {
+                                                var mail = user.email;
+                                                var encripta = cifrar(mail.toString());
+                                                var correo = encripta.palabraEncriptada;
+                                                h3 = document.getElementById("errorMensage");
+                                                if (cuenta.length > 0) {
+                                                    if (cantRV > 0 && cantR.length > 0) {
+                                                        if (alias.length > 0) {
+                                                            fire.collection("IMAGENES").where("mail", "==", correo)
+                                                                    .get()
+                                                                    .then(function (querySnapshot) {
+                                                                        querySnapshot.forEach(function (doc) {
+                                                                            var publicaciones = doc.data();
+                                                                            ganancias = publicaciones.ganancias;
+                                                                            docu = publicaciones.uid;
+                                                                            var docRef = fire.collection('IMAGENES').doc(docu);
+                                                                            if (ganancias === 0 || ganancias === undefined) {
+                                                                                h3.innerHTML = 'No cuenta con saldo suficiente para realizar este retiro';
+                                                                            } else if (ganancias > 0) {
+                                                                                if (cantRV > ganancias) {
+                                                                                    h3.innerHTML = 'No cuenta con saldo suficiente para realizar este retiro';
+                                                                                } else if (cantRV <= ganancias) {
+                                                                                    fetch('claves/claves.txt')
+                                                                                            .then(res => res.text())
+                                                                                            .then(content => {
+                                                                                                let lines = content.split(/\n/);
+                                                                                                lines.forEach(line => {
+                                                                                                    const key = CryptoJS.enc.Utf8.parse(line);
+                                                                                                    fetch('claves/claveiV.txt')
+                                                                                                            .then(res => res.text())
+                                                                                                            .then(content => {
+                                                                                                                let lines = content.split(/\n/);
+                                                                                                                lines.forEach(lines => {
+                                                                                                                    const iv = CryptoJS.enc.Utf8.parse(lines);
+                                                                                                                    wordS = alias;
+                                                                                                                    wordI = cuenta;
+                                                                                                                    let srcsS = CryptoJS.enc.Utf8.parse(wordS);
+                                                                                                                    let encryptedS = CryptoJS.AES.encrypt(srcsS, key, {iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7});
+                                                                                                                    let srcsI = CryptoJS.enc.Utf8.parse(wordI);
+                                                                                                                    let encryptedI = CryptoJS.AES.encrypt(srcsI, key, {iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7});
+                                                                                                                    var aliasT = encryptedS.ciphertext.toString().toUpperCase();
+                                                                                                                    var cuentaT = encryptedI.ciphertext.toString().toUpperCase();
+                                                                                                                    var newSaldo = ganancias - cantRV;
+                                                                                                                    var newData = {
+                                                                                                                        ganancias: newSaldo
+                                                                                                                    };
+                                                                                                                    docRef.update(newData).then(function () {
+                                                                                                                        var aestTime = new Date().toLocaleString("en-US", {timeZone: "America/Mexico_City"});
+                                                                                                                        aestTime = new Date(aestTime);
+                                                                                                                        var newDateOptions = {
+                                                                                                                            day: "2-digit",
+                                                                                                                            month: "2-digit",
+                                                                                                                            year: "numeric",
+                                                                                                                        };
+                                                                                                                        var fecha1 = aestTime.toLocaleString("en-US", newDateOptions);
+                                                                                                                        arrFecha = fecha1.toString();
+                                                                                                                        separador = "/";
+                                                                                                                        var arrayDeCadenas = arrFecha.split(separador);
+                                                                                                                        mes = arrayDeCadenas[0];
+                                                                                                                        dia = arrayDeCadenas[1];
+                                                                                                                        year = arrayDeCadenas[2];
+                                                                                                                        fecha11 = "" + year + "-" + mes + "-" + dia + "";
+                                                                                                                        var data = {
+                                                                                                                            fecha: fecha11,
+                                                                                                                            alias: aliasT,
+                                                                                                                            cuenta: cuentaT,
+                                                                                                                            cantR: cantRV,
+                                                                                                                            mail: correo,
+                                                                                                                        };
+                                                                                                                        firebase.firestore().collection('PAGOS').doc().set(data).then(function () {
+                                                                                                                            location.reload();
+                                                                                                                        });
+                                                                                                                    });
+                                                                                                                });
+                                                                                                            });
+                                                                                                });
+                                                                                            });
+                                                                                } else {
+                                                                                    console.log("error");
+                                                                                    h3.innerHTML = 'Ha ocurrido un error inesperado por favor intentelo mas tarde';
+                                                                                }
+                                                                            }
+                                                                        });
+                                                                    });
+                                                        } else {
+                                                            h3.innerHTML = 'El campo Alias no puede quedar vacio';
+                                                        }
+                                                    } else {
+                                                        h3.innerHTML = 'El campo Cantidad no puede quedar vacio';
+                                                    }
+                                                } else {
+                                                    h3.innerHTML = 'El campo cuenta no puede quedar vacio';
+                                                }
+                                            } else {
+                                                location.replace("index.html");
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            var database = firebase.database();
+            auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .onSnapshot(function (querySnapshot) {
+                                var cities = [];
+                                querySnapshot.forEach(function (doc) {
+                                    publicaciones = doc.data();
+                                    if (correo === publicaciones.mail) {
+                                        newN = publicaciones.new;
+                                        newC = publicaciones.newC;
+                                        newD = publicaciones.newD;
+                                        var uid = publicaciones.uid;
+                                        cities.push(newN + " : " + newC + " : " + uid);
+                                        if (publicaciones.new) {
+                                            $("#button_Not").attr("onclick", "deleteN('" + uid + "')");
+                                            $("#button_NotT").attr("onclick", "deleteN('" + uid + "')");
+                                            divNot = document.getElementById("not");
+                                            divNotTog = document.getElementById("notT");
+                                            withN = 35;
+                                            heightW = 35;
+                                            withNT = 30;
+                                            heightWT = 30;
+                                            divNot.innerHTML = '';
+                                            divNotTog.innerHTML = '';
+                                            $("#notT").append("<img style='width: " + withNT + "px;height: " + heightWT + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                            $("#not").append("<img style='width: " + withN + "px;height: " + heightW + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                        }
+                                        if (publicaciones.newM) {
+                                            $("#notificacion").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#notificacion1").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#downR").attr("src", "img/downR.png");
+                                            $("#button_Men").attr("onclick", "deleteM('" + uid + "')");
+                                            $("#drop_men").attr("onclick", "deleteM('" + uid + "')");
+                                        }
+                                    } else {
+                                    }
+                                });
+                            });
+                }
+            });
+            function onKeyUp(string) {
+                var filtro = "<>";
+                document.getElementById("errorMensage").innerHTML = '';
+                for (var i = 0; i < string.length; i++) {
+                    if (filtro.indexOf(string.charAt(i)) > -1) {
+                        document.getElementById("errorMensage").innerHTML = '< ó > no son caracteres validos';
+                    }
+                }
+            }
+            function redireccionar() {
+                location.href = 'contactanos.html';
+            }
+        </script>
+    </body>
+</html>

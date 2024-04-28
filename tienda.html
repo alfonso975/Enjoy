@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!-- Create By Alfonso Lopez -->
+<html>
+    <head>
+        <title>Enjoy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="img/icon.png" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"  crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/637f7442f6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="fuente/comicS.css">
+        <link rel="stylesheet" href="script/css/scrooll1.css">
+        <script src="https://js.stripe.com/v3/"></script>
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fuente/comic-sans-ms-4.ttf");
+            }
+            .zoom:hover{
+                transform: scale(1.2);
+            }
+            .dropdown > .dropdown-item:hover{
+                background-color: #04242c;
+                color:white;
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                font-family: Montserrat, sans-serif;}
+            @media (min-width: 992px) {
+                .ocultar-div{
+                    display:none;
+                }
+            }
+            @media (max-width: 991px) {
+                .ocultar-nav{
+                    display:none;
+                }
+            }
+            .btn:focus{
+                outline: none;
+                box-shadow: none;
+
+                font-family: "Comic Sans MS",cursive;
+            }
+            .form-control:focus{
+                outline: none;
+                box-shadow: none;
+                font-family: "Comic Sans MS",cursive;
+            }
+            .loader {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('img/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+                background-color: #020000;
+                align-items: center;
+                display: flex;
+                opacity: .9;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body style="background-image: url('img/store.jpg');background-repeat: no-repeat;background-size: cover;overflow-x: hidden;background-attachment: fixed;"
+          class="scrol scrol-thumb">
+        <div style="position: fixed;top: 0px;width: 100%;display: block;padding: 0px" class="sticky-top">
+            <nav class="navbar bg-dark navbar-expand-lg navbar-toggleable-xl" style="background-color: #343a40;padding: 0px;justify-content: space-around;margin: 0px">
+                <div class="navbar-toggler" style="padding: 0px;justify-content: space-around;width: 100%" >
+                    <ul class="nav justify-content-around" style="padding: 0px;">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 5px;background-color: #343a40">
+                                <img alt='File not found' src="img/camRetro.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img alt='File not found' src="img/iconUsers.png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img alt='File not found' src="img/add .png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" id="button_NotT" onclick="deleteN()" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <div id="notT" class="p-0" style="padding:0px">
+                                    <img alt='File not found' src="img/notification (1).png" style="height: 30px;width: 30px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 5px;background-color: #343a40">
+                                <img alt='File not found' id="imgprofile1" style="width: 30px;height: 30px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img alt='File not found' id="downR" src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img alt='File not found' style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" href="tienda.html">
+                                        <img alt='File not found' style="width: 20px;height: 20px;margin-right: 5px" src="img/tienda.png">Store
+                                    </a>
+                                    <a id="drop_men" class="dropdown-item text-light mb-1" onclick="deleteM()" href="#">
+                                        <img alt='File not found' id="notificacion1" style="width: 20px;height: 20px;margin-right: 5px" src="img/mensajeW.png">Chat
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img alt='File not found' style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrarS">
+                                        <img alt='File not found' style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar justify-content-center ocultar-nav bg-dark" style="padding: 0px;margin-bottom: 0px">
+                    <ul class="nav justify-content-center" style="padding: 0px">
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="publicaciones.html" style="padding: 0px;padding-right: 25px;background-color: #343a40">
+                                <img alt='File not found' src="img/camRetro.png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>                        
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="search.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img alt='File not found' src="img/iconUsers.png" style="height: 30px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="tienda.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img alt='File not found' src="img/tienda.png" style="height: 33px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item " id="s" href="subir.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img alt='File not found' src="img/add .png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item " id="button_Men" onclick="deleteM()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img alt='File not found' id="notificacion" src="img/mensajeW.png" style="width: 35px;height: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px;cursor: pointer">
+                            <a class="nav-item nav-link" id="button_Not" onclick="deleteN()" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <div id="not" class="p-0" style="padding:0px">
+                                    <img alt='File not found' src="img/notification (1).png" style="height: 35px;width: 35px;margin-top: 8px;margin-bottom: 8px" class="zoom">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <a class="nav-item nav-link" href="profile.html" style="padding: 0;padding-right: 25px;background-color: #343a40">
+                                <img alt='File not found' id="imgprofile" style="width: 35px;height: 35px;border-radius: 18px;object-fit:cover;margin-top: 8px;margin-bottom: 8px" src="img/user.png" class="zoom">
+                            </a>
+                        </li>
+                        <li class="nav-item p-0" style="padding: 0px">
+                            <div class="dropdown show p-0">
+                                <a  href="#" style="width: 3px;height: 3px;background-color: #343a40" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img alt='File not found' src="img/down.png" style="width: 12px;margin-top: 16px;margin-bottom: 8px" class="zoom">
+                                </a>
+
+                                <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenuLink" style="background-color:  #343a40">
+                                    <a class="dropdown-item text-light mb-1" href="profile.html">
+                                        <img alt='File not found' style="width: 20px;height: 20px;border-radius: 200px;margin-right: 5px" src="img/userd.png">Perfil
+                                    </a>
+
+                                    <a class="dropdown-item text-light mb-1" href="settings.html">
+                                        <img alt='File not found' style="width: 20px;height: 20px;margin-right: 5px" src="img/settings.png">Configuracion
+                                    </a>
+                                    <a class="dropdown-item text-light mb-1" id="cerrar">
+                                        <img alt='File not found' style="width: 20px;height: 20px;margin-right: 5px" src="img/logout.png">Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="" id="loader" style="background-color: #181b22;text-align: center;display: none">
+            <h2 id='loaderMensaje' style="font-size: 40px;text-align: center;color: #2aa58a" class="justify-content-center">
+                Actualizando datos, el tiempo de carga depende de su conexion...
+            </h2>
+        </div>
+        <div style="height: 55px">s </div>
+        <div class="container-fluid" style="top: 50%;margin-bottom: 25px;">
+            <div class="row mt-3 justify-content-center " >
+                <div class="col-md-9" style="text-align: center;background-color: rgba(0,0,0,0.6);background-repeat: no-repeat;background-size: cover;overflow-x: hidden;background-attachment: fixed;border-radius: 35px;">
+                    <div class="form-group text-center pt-2">
+                        <h1 style="color: white;font-family: 'Comic Sans MS',cursive;">BIENVENIDO A LA STORE</h1>
+                        <h3 style="color: white;font-family: 'Comic Sans MS',cursive;font-size: 15px;margin-top: 10px;margin-bottom: 10px">EN ESTA SECCIÓN PODRAS COMPRAR DIAMANTES O RECARGAR COINS DE TU CUENTA ENJOY THE MOMENT</h3>
+                    </div>
+                    <div class="container-fluid text-center">
+                        <div class="row" style="justify-content: space-around">
+                            <div class="justify-content-center" style="max-width: 48%;text-align: center;word-wrap: break-word;">
+                                <img alt='File not found' src="img/compDiamante(1).png" style="max-width: 50%;"> 
+                                <h1 style="color: #7cccc0;font-family: 'Comic Sans MS',cursive;">1 x 1 COIN</h1>
+                                <h2 style="color: white;font-family: 'Comic Sans MS',cursive;font-size: 100%">Diamantes</h2>
+                                <div id="divDiam">
+                                    <h2 style="color: white;font-family: 'Comic Sans MS',cursive;">Diamantes</h2>
+                                </div>
+                                <div class="container justify-content-center" style="text-align: center;">
+                                    <div class="row" style="justify-content: center;display: flex;align-items: center">
+                                        <button class="btn zoom" onclick="menos()" style="outline: none;width: 30px;height: 30px;border-radius: 200px;background-image: url('img/menos.png');background-position: center;object-fit: cover;background-repeat:no-repeat;background-size: cover;background-color: #333333"></button>
+                                        <input type="text" id="diamonds"  class="form-control" 
+                                               style="border-radius: 10px;background-color: #333333;
+                                               font-family: 'Comic Sans MS',cursive;border-color:#307D7C;
+                                               color: white;text-align: center;font-size: 30px;width: 50%; " value="0" onclick="clean()">
+                                        <button class="btn zoom" onclick="more()" style="outline: none;width: 30px;height: 30px;border-radius: 200px;background-image: url('img/more.png');background-position: center;object-fit: cover;background-repeat:no-repeat;background-size: cover;background-color: #333333"></button>
+                                    </div>
+                                </div>
+                                <button onclick="compDiam()" class="btn zoom" style="font-size: 17px;outline: none;color: white;font-family: 'Comic Sans MS',cursive;background-color: #333333;border-radius: 15px;margin-top: 20px;margin-bottom: 20px"><img alt='File not found' src="img/compDiamante(1).png" style="height: 30px;margin-right: 8px">Comprar Diamantes</button>
+                            </div>
+                            <div style="max-width: 48%">
+                                <img alt='File not found' src="img/wallet.png" style="max-width: 47%"> 
+                                <h1 style="font-family: 'Comic Sans MS',cursive;text-align: center;color: white  ">COINS</h1>
+
+                                <div id="coins">
+                                    <h3 style="color: white;font-family: 'Comic Sans MS',cursive"> USD</h3>
+                                </div>
+
+                                <h3 style="color: white;font-family: 'Comic Sans MS',cursive;font-size: 100%;margin-top: 10px;margin-bottom: 10px">
+                                    Recarga y usa coins para seguir a tus influencers favoritos o regalar diamantes
+                                </h3>
+                                <div class="container justify-content-center" style="text-align: center;">
+                                    <div class="row" style="justify-content: center;display: flex;align-items: center">
+                                        <button class="btn zoom" onclick="menosC()" style="outline: none;width: 30px;height: 30px;border-radius: 200px;background-image: url('img/menos.png');background-position: center;object-fit: cover;background-repeat:no-repeat;background-size: cover;background-color: #333333"></button>
+                                        <input type="text" id="credito"  class="form-control" onclick="clean()"
+                                               style="border-radius: 10px;background-color: #333333;
+                                               font-family: 'Comic Sans MS',cursive;border-color:#307D7C;
+                                               color: white;text-align: center;font-size: 30px;width: 50%; " value="0">
+                                        <button class="btn zoom" onclick="moreC()" style="outline: none;width: 30px;height: 30px;border-radius: 200px;background-image: url('img/more.png');background-position: center;object-fit: cover;background-repeat:no-repeat;background-size: cover;background-color: #333333"></button>
+                                    </div>
+                                </div>
+                                <button class="btn zoom" id="buyCoins" onclick="buy()" style="font-size: 17px;outline: none;color: white;font-family: 'Comic Sans MS',cursive;background-color: #333333;border-radius: 15px;margin-top: 20px;margin-bottom: 20px"><img alt='File not found' src="img/wallet.png" style="height: 30px;margin-right: 8px">Recargar Coins</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container justify-content-center" style="text-align: center">
+                        <h2 id="messageAlert" style="font-family: 'Comic Sans MS',cursive;color: white"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <script src="script/cif.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="script/jq.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-compat.js"></script>
+        <script>
+                                    var firebaseConfig = {
+                                        apiKey: "AIzaSyB9zjuIk3aupb9lxw4kdE10WELo3RflJP0",
+                                        authDomain: "enjoy-13d08.firebaseapp.com",
+                                        databaseURL: "https://enjoy-13d08-default-rtdb.firebaseio.com",
+                                        projectId: "enjoy-13d08",
+                                        storageBucket: "enjoy-13d08.appspot.com",
+                                        messagingSenderId: "259344011433",
+                                        appId: "1:259344011433:web:2766c0f29a97a74da5d9b8"
+                                    };
+                                    firebaseApp = firebase.initializeApp(firebaseConfig);
+                                    var auth = firebase.auth();
+                                    var fire = firebase.firestore();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script>
+                                    $("#cerrar").click(function () {
+                                        auth.signOut().then(function () {
+                                            window.location = "index.html";
+                                        });
+                                    });
+                                    $("#cerrarS").click(function () {
+                                        auth.signOut().then(function () {
+                                            window.location = "index.html";
+                                        });
+                                    });
+                                    $("#diamonds").keypress(function (e) {
+                                        var string = $("#diamonds").val();
+                                        var key = e.charCode;
+                                        if (key < 48 || key > 57) {
+                                            e.preventDefault();
+                                        }
+                                    });
+                                    function more() {
+                                        clean();
+                                        var valorCaja = parseInt($("#diamonds").val());
+                                        var newValor = valorCaja + 1;
+                                        var newCaja = document.getElementById("diamonds");
+                                        newCaja.value = newValor;
+                                    }
+                                    function menos() {
+                                        clean();
+                                        var valorCaja = parseInt($("#diamonds").val());
+                                        if (valorCaja === 0) {
+
+                                        } else if (valorCaja > 0) {
+                                            var newValor = valorCaja - 1;
+                                            var newCaja = document.getElementById("diamonds");
+                                            newCaja.value = newValor;
+                                        }
+
+                                    }
+                                    $("#credito").keypress(function (e) {
+                                        var key = e.charCode;
+                                        if (key < 48 || key > 57) {
+                                            e.preventDefault();
+                                        }
+                                    });
+                                    function moreC() {
+                                        clean();
+                                        var valorCaja = parseInt($("#credito").val());
+                                        var newValor = valorCaja + 1;
+                                        var newCaja = document.getElementById("credito");
+                                        newCaja.value = newValor;
+                                    }
+                                    function menosC() {
+                                        clean();
+                                        var valorCaja = parseInt($("#credito").val());
+                                        if (valorCaja === 0) {
+
+                                        } else if (valorCaja > 0) {
+                                            var newValor = valorCaja - 1;
+                                            var newCaja = document.getElementById("credito");
+                                            newCaja.value = newValor;
+                                        }
+
+                                    }
+                                    function clean() {
+                                        var messageAlert = document.getElementById("messageAlert");
+                                        messageAlert.innerHTML = '';
+                                    }
+        </script>
+        <script>
+            function deleteN(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+
+                    docref.update({
+                        new : firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "notificaciones.html";
+                        location.href = url;
+                    });
+                } else {
+                    var url = "notificaciones.html";
+                    location.href = url;
+                }
+            }
+            function deleteM(uid) {
+                if (uid) {
+                    var docref = fire.collection('IMAGENES').doc(uid);
+
+                    docref.update({
+                        newM: firebase.firestore.FieldValue.delete()
+                    }).then(function () {
+                        var url = "bandejaEntrada.html";
+                        location.href = url;
+                    });
+
+
+                } else {
+                    var url = "bandejaEntrada.html";
+                    location.href = url;
+                }
+            }
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged(async function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = await cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .get()
+                            .then(function (querySnapshot) {
+                                querySnapshot.forEach(function (doc) {
+                                    var publicaciones = doc.data();
+                                    foto = publicaciones.foto;
+                                    if (foto === "undefined" || foto === "" || foto === undefined) {
+
+                                    } else {
+                                        $("#imgprofile").attr("src", foto);
+                                        $("#imgprofile1").attr("src", foto);
+                                    }
+                                });
+                            })
+                            .catch(function (error) {
+                            });
+                } else {
+                    location.replace("index.html");
+                }
+            });
+        </script>
+        <script>
+            var database = firebase.database();
+            auth.onAuthStateChanged( async function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta = await cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .onSnapshot(function (querySnapshot) {
+                                var cities = [];
+                                querySnapshot.forEach(function (doc) {
+                                    publicaciones = doc.data();
+                                    if (correo === publicaciones.mail) {
+                                        newN = publicaciones.new;
+                                        newC = publicaciones.newC;
+                                        newD = publicaciones.newD;
+                                        var uid = publicaciones.uid;
+                                        cities.push(newN + " : " + newC + " : " + uid);
+                                        if (publicaciones.new) {
+                                            $("#button_Not").attr("onclick", "deleteN('" + uid + "')");
+                                            $("#button_NotT").attr("onclick", "deleteN('" + uid + "')");
+                                            divNot = document.getElementById("not");
+                                            divNotTog = document.getElementById("notT");
+                                            withN = 35;
+                                            heightW = 35;
+                                            withNT = 30;
+                                            heightWT = 30;
+                                            divNot.innerHTML = '';
+                                            divNotTog.innerHTML = '';
+                                            $("#notT").append("<img alt='File not found' style='width: " + withNT + "px;height: " + heightWT + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                            $("#not").append("<img alt='File not found' style='width: " + withN + "px;height: " + heightW + "px;margin-top: 8px;margin-bottom: 8px' class='zoom' src='img/newNot.png'>");
+                                        }
+                                        if (publicaciones.newM) {
+                                            $("#notificacion").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#notificacion1").attr("src", "img/MensajeBlanco(1).png");
+                                            $("#downR").attr("src", "img/downR.png");
+                                            $("#button_Men").attr("onclick", "deleteM('" + uid + "')");
+                                            $("#drop_men").attr("onclick", "deleteM('" + uid + "')");
+                                        }
+                                    } else {
+                                    }
+                                });
+                            });
+                }
+            });
+        </script>
+        <script>
+            auth.onAuthStateChanged( async function (user) {
+                if (user) {
+                    var mail = user.email;
+                    var encripta =await cifrar(mail.toString());
+                    var correo = encripta.palabraEncriptada;
+                    fire.collection("IMAGENES").where("mail", "==", correo)
+                            .get()
+                            .then(function (querySnapshot) {
+                                querySnapshot.forEach(function (doc) {
+                                    var publicaciones = doc.data();
+                                    var coins = publicaciones.coins;
+                                    var diamantesBase = publicaciones.diamantes;
+                                    if (coins) {
+                                        divCoins = document.getElementById("coins");
+                                        divCoins.innerHTML = '';
+                                        $("#coins").append("<h3 class='cursive' style='color: white;font-family: Comic Sans MS,cursive;'>" + coins + " USD</h3>");
+                                    } else {
+                                        divCoins = document.getElementById("coins");
+                                        divCoins.innerHTML = '';
+                                        $("#coins").append("<h3 class='cursive' style='color: white;font-family: Comic Sans MS,cursive;'>0 USD</h3>");
+
+                                    }
+
+
+                                    if (diamantesBase) {
+                                        divDiam = document.getElementById("divDiam");
+                                        divDiam.innerHTML = '';
+                                        $("#divDiam").append("<h3 class='cursive' style='color: white;font-family: Comic Sans MS,cursive;'>" + diamantesBase + "</h3>");
+                                    } else {
+                                        divDiam = document.getElementById("divDiam");
+                                        divDiam.innerHTML = '';
+                                        $("#divDiam").append("<h3 class='cursive' style='color: white;font-family: Comic Sans MS,cursive;'>0</h3>");
+
+                                    }
+
+                                });
+                            });
+                }
+            });
+            function buy() {
+                auth.onAuthStateChanged(async function   (user) {
+
+                    if (user) {
+                        var mail = user.email;
+                        var encripta =await cifrar(mail.toString());
+                        var rCS = encripta.palabraEncriptada;
+                        if ($("#credito").val() > 0 && $("#credito").val() < 1999999999999999) {
+                            var ID = $("#credito").val().toString();
+                            const createStripeCheckout = firebase.functions().httpsCallable('stripeCheckout');
+                            const stripe = Stripe('pk_live_51HakUZLWZTh2cmEhTxiyCroyuU2xMcFqaSnTgA1QUtXaaekTkdaH8AtWxaktIKlPv6wDDfum8OO2xKJNNDAPQHtk00py6U2ePQ');
+                            var nombre = "RECARGA SALDO";
+                            var correo = rCS;
+                            var type = "rSa1eu";
+                            var ammountD = parseFloat(ID);
+                            var loaderMensaje = document.getElementById("loaderMensaje");
+                            var element = document.getElementById("loader");
+                            element.style.display = 'flex';
+                            element.classList.toggle("loader");
+                            loaderMensaje.innerHTML = 'Procesando solicitud, por favor espere...';
+                            createStripeCheckout({name: nombre, correo: correo, type: type, ammountD: ammountD}).then(response => {
+                                const sessionId = response.data.id;
+                                stripe.redirectToCheckout({
+                                    sessionId: sessionId,
+                                }).then(function (result) {
+                                });
+                            });
+                        } else {
+                            var messageAlert = document.getElementById("messageAlert");
+                            messageAlert.innerHTML = 'Debe ingresar 1 coin minimo';
+
+                        }
+                    }
+                });
+            }
+            function compDiam() {
+                var diamantito = $("#diamonds").val();
+                if (diamantito > 0) {
+                    auth.onAuthStateChanged(async function (user) {
+                        if (user) {
+                            var mail = user.email;
+                            var encripta =await cifrar(mail.toString());
+                            var correo = encripta.palabraEncriptada;
+                            fire.collection("IMAGENES").where("mail", "==", correo)
+                                    .get()
+                                    .then(function (querySnapshot) {
+                                        querySnapshot.forEach(function (doc) {
+                                            var publicaciones = doc.data();
+                                            var coinsData = publicaciones.coins;
+                                            if (coinsData) {
+                                                var fondo = coinsData;
+                                                var contDiamantito = parseFloat(diamantito);
+                                                if (contDiamantito === fondo || contDiamantito < fondo) {
+                                                    diamantesBase = publicaciones.diamantes;
+                                                    if (diamantesBase) {
+                                                        docu = publicaciones.uid;
+                                                        var docRef = fire.collection('IMAGENES').doc(docu);
+                                                        var calc = contDiamantito;
+                                                        var newCoins = coinsData - calc;
+                                                        var newdiamantes = contDiamantito + parseInt(diamantesBase);
+                                                        var newData = {
+                                                            coins: newCoins,
+                                                            diamantes: newdiamantes
+                                                        };
+                                                        docRef.update(newData).then(function () {
+                                                            location.reload();
+                                                        });
+
+                                                    } else if (diamantesBase === undefined || diamantesBase === 0) {
+                                                        docu = publicaciones.uid;
+                                                        var docRef = fire.collection('IMAGENES').doc(docu);
+                                                        var calc = contDiamantito;
+                                                        var newCoins = coinsData - calc;
+                                                        var newData = {
+                                                            coins: newCoins,
+                                                            diamantes: contDiamantito
+                                                        };
+                                                        docRef.update(newData).then(function () {
+                                                            location.reload();
+                                                        });
+                                                    }
+                                                } else if (contDiamantito > fondo) {
+                                                    var messageAlert = document.getElementById("messageAlert");
+                                                    messageAlert.innerHTML = 'No tienes suficientes coins';
+                                                }
+
+                                            } else if (coinsData === undefined || coinsData === 0) {
+                                                var messageAlert = document.getElementById("messageAlert");
+                                                messageAlert.innerHTML = 'Debe recargar coins para comprar diamantes';
+                                            }
+                                        });
+                                    });
+                        }
+                    });
+                } else {
+                    var messageAlert = document.getElementById("messageAlert");
+                    messageAlert.innerHTML = 'Debe ingresar 1 diamante minimo';
+                }
+            }
+        </script>
+    </body>
+</html>
